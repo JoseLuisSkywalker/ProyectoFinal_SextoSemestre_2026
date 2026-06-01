@@ -15,14 +15,13 @@ public class Inicio extends javax.swing.JFrame {
   
     public Inicio() {
         initComponents();
-        setLocationRelativeTo(null);
-        setVisible(true);
         setSize(1400, 800); 
         setResizable(false); 
         setLocationRelativeTo(null);
         setVisible(true);
         
     }
+    
 
     
     

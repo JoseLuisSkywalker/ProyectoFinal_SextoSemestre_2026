@@ -1,6 +1,8 @@
 
 package com.mycompany.wmhospital;
 
+
+import conexion.ConexionBD;
 import javax.swing.SwingUtilities;
 import vista.Inicio;
 
@@ -13,6 +15,9 @@ public class WMhospital {
             public void run() {
 
                 new Inicio(); 
+                
+                ConexionBD conexion = new ConexionBD();
+                conexion.abrirConexion();
 
             }
         });

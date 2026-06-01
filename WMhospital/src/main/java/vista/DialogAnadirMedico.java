@@ -1,8 +1,15 @@
+package vista;
+
+
+import controlador.MedicoDAO;
+import javax.swing.JOptionPane;
+import javax.swing.text.MaskFormatter;
+import modelo.Medico;
+
 /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JDialog.java to edit this template
  */
-package vista;
 
 /**
  *
@@ -20,8 +27,32 @@ public class DialogAnadirMedico extends javax.swing.JDialog {
         initComponents();
         setSize(400, 350);
         setResizable(false);
+        setLocationRelativeTo(parent);
         
+         try {
+            MaskFormatter maskId = new MaskFormatter("####");
+            maskId.setPlaceholderCharacter('0');
+            jFormattedTextField1.setFormatterFactory(
+                    new javax.swing.text.DefaultFormatterFactory(maskId)
+            );
+      
+        } catch (java.text.ParseException e) {
+        e.printStackTrace();
+        }
+        
+        try {
+            MaskFormatter maskTel = new MaskFormatter("### - ### - ####");
+            maskTel.setPlaceholderCharacter('0');
+            jFormattedTextField2.setFormatterFactory(
+                    new javax.swing.text.DefaultFormatterFactory(maskTel)
+            );
+            
+        } catch (java.text.ParseException e){
+            e.printStackTrace();
+        }
+       
     }
+
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -32,107 +63,109 @@ public class DialogAnadirMedico extends javax.swing.JDialog {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jLabel4 = new javax.swing.JLabel();
+        jLabel1 = new javax.swing.JLabel();
+        jFormattedTextField1 = new javax.swing.JFormattedTextField();
+        jLabel2 = new javax.swing.JLabel();
+        jTextField1 = new javax.swing.JTextField();
+        jTextField2 = new javax.swing.JTextField();
         jTextField4 = new javax.swing.JTextField();
-        jLabel5 = new javax.swing.JLabel();
-        jTextField5 = new javax.swing.JTextField();
-        jLabel6 = new javax.swing.JLabel();
-        jTextField6 = new javax.swing.JTextField();
-        jLabel7 = new javax.swing.JLabel();
-        jComboBox1 = new javax.swing.JComboBox<>();
-        jLabel8 = new javax.swing.JLabel();
-        jTextField7 = new javax.swing.JTextField();
-        jLabel9 = new javax.swing.JLabel();
-        jTextField8 = new javax.swing.JTextField();
+        jFormattedTextField2 = new javax.swing.JFormattedTextField();
         jButton1 = new javax.swing.JButton();
+        jLabel3 = new javax.swing.JLabel();
+        jLabel4 = new javax.swing.JLabel();
+        jLabel5 = new javax.swing.JLabel();
+        jLabel6 = new javax.swing.JLabel();
+        jComboBox1 = new javax.swing.JComboBox<>();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setMinimumSize(new java.awt.Dimension(400, 350));
-        setSize(new java.awt.Dimension(400, 350));
+        setPreferredSize(new java.awt.Dimension(400, 350));
         getContentPane().setLayout(null);
 
-        jLabel4.setText("Id Médico");
-        getContentPane().add(jLabel4);
-        jLabel4.setBounds(30, 20, 70, 20);
+        jLabel1.setText("ID Médico");
+        getContentPane().add(jLabel1);
+        jLabel1.setBounds(20, 30, 70, 17);
+
+        jFormattedTextField1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jFormattedTextField1ActionPerformed(evt);
+            }
+        });
+        getContentPane().add(jFormattedTextField1);
+        jFormattedTextField1.setBounds(100, 20, 260, 30);
+
+        jLabel2.setText("Nombre");
+        getContentPane().add(jLabel2);
+        jLabel2.setBounds(20, 70, 60, 17);
+        getContentPane().add(jTextField1);
+        jTextField1.setBounds(100, 60, 260, 30);
+        getContentPane().add(jTextField2);
+        jTextField2.setBounds(100, 100, 260, 30);
         getContentPane().add(jTextField4);
-        jTextField4.setBounds(110, 20, 260, 23);
+        jTextField4.setBounds(100, 180, 260, 30);
 
-        jLabel5.setText("Nombre");
-        getContentPane().add(jLabel5);
-        jLabel5.setBounds(30, 60, 70, 20);
-
-        jTextField5.addActionListener(new java.awt.event.ActionListener() {
+        jFormattedTextField2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField5ActionPerformed(evt);
+                jFormattedTextField2ActionPerformed(evt);
             }
         });
-        getContentPane().add(jTextField5);
-        jTextField5.setBounds(110, 60, 260, 23);
+        getContentPane().add(jFormattedTextField2);
+        jFormattedTextField2.setBounds(100, 220, 260, 30);
 
-        jLabel6.setText("Apellido ");
-        getContentPane().add(jLabel6);
-        jLabel6.setBounds(30, 100, 60, 20);
-        getContentPane().add(jTextField6);
-        jTextField6.setBounds(110, 100, 260, 23);
-
-        jLabel7.setText("Número de Departamento");
-        getContentPane().add(jLabel7);
-        jLabel7.setBounds(30, 140, 160, 20);
-
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Seleccionar", "1", "2", "3", "4", "5", "6", "7" }));
-        getContentPane().add(jComboBox1);
-        jComboBox1.setBounds(200, 140, 170, 23);
-
-        jLabel8.setText("Dirección");
-        getContentPane().add(jLabel8);
-        jLabel8.setBounds(30, 180, 60, 17);
-
-        jTextField7.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField7ActionPerformed(evt);
-            }
-        });
-        getContentPane().add(jTextField7);
-        jTextField7.setBounds(110, 180, 260, 23);
-
-        jLabel9.setText("Teléfono");
-        getContentPane().add(jLabel9);
-        jLabel9.setBounds(30, 220, 60, 20);
-
-        jTextField8.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField8ActionPerformed(evt);
-            }
-        });
-        getContentPane().add(jTextField8);
-        jTextField8.setBounds(110, 220, 260, 23);
-
-        jButton1.setText("Añadir Médico");
+        jButton1.setText("Aceptar");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton1ActionPerformed(evt);
             }
         });
         getContentPane().add(jButton1);
-        jButton1.setBounds(30, 260, 340, 40);
+        jButton1.setBounds(110, 270, 210, 23);
+
+        jLabel3.setText("Apellido");
+        getContentPane().add(jLabel3);
+        jLabel3.setBounds(20, 110, 60, 17);
+
+        jLabel4.setText("Núm Dep.");
+        getContentPane().add(jLabel4);
+        jLabel4.setBounds(20, 150, 60, 17);
+
+        jLabel5.setText("Dirección");
+        getContentPane().add(jLabel5);
+        jLabel5.setBounds(20, 190, 60, 17);
+
+        jLabel6.setText("Teléfono");
+        getContentPane().add(jLabel6);
+        jLabel6.setBounds(20, 230, 70, 17);
+
+        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "1", "2", "3", "4", "5", "6", "7" }));
+        jComboBox1.setToolTipText("");
+        jComboBox1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jComboBox1ActionPerformed(evt);
+            }
+        });
+        getContentPane().add(jComboBox1);
+        jComboBox1.setBounds(100, 140, 260, 23);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jTextField5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField5ActionPerformed
+    private void jFormattedTextField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jFormattedTextField1ActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField5ActionPerformed
+    }//GEN-LAST:event_jFormattedTextField1ActionPerformed
 
-    private void jTextField7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField7ActionPerformed
+    private void jFormattedTextField2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jFormattedTextField2ActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField7ActionPerformed
+    }//GEN-LAST:event_jFormattedTextField2ActionPerformed
 
-    private void jTextField8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField8ActionPerformed
+    private void jComboBox1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox1ActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField8ActionPerformed
+    }//GEN-LAST:event_jComboBox1ActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
+        
+        insertarMedico(); 
     }//GEN-LAST:event_jButton1ActionPerformed
 
     /**
@@ -171,20 +204,68 @@ public class DialogAnadirMedico extends javax.swing.JDialog {
             }
         });
     }
+    
+    private void insertarMedico() {
+
+        int idMedico = Integer.parseInt(jFormattedTextField1.getText().trim());
+
+        String nombre = jTextField1.getText().trim();
+
+        String apellido = jTextField2.getText().trim();
+
+        int numeroDepartamento = Integer.parseInt(
+            jComboBox1.getSelectedItem().toString()
+        );
+
+        String direccion = jTextField4.getText().trim();
+
+        String telefono = jFormattedTextField2.getText().trim();
+
+        Medico medico = new Medico(
+                idMedico,
+                nombre,
+                apellido,
+                numeroDepartamento,
+                direccion,
+                telefono
+        );
+
+        MedicoDAO medicoDAO = new MedicoDAO();
+
+        boolean insertado = medicoDAO.insertar(medico);
+
+        if (insertado) {
+
+            JOptionPane.showMessageDialog(
+                    this,
+                    "Médico agregado correctamente."
+            );
+            System.out.print("se agrego un medico");
+
+        dispose();
+
+        } else {
+
+            JOptionPane.showMessageDialog(
+                    this,
+                    "No fue posible agregar el médico."
+            );
+        }
+}
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton1;
     private javax.swing.JComboBox<String> jComboBox1;
+    private javax.swing.JFormattedTextField jFormattedTextField1;
+    private javax.swing.JFormattedTextField jFormattedTextField2;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
-    private javax.swing.JLabel jLabel7;
-    private javax.swing.JLabel jLabel8;
-    private javax.swing.JLabel jLabel9;
+    private javax.swing.JTextField jTextField1;
+    private javax.swing.JTextField jTextField2;
     private javax.swing.JTextField jTextField4;
-    private javax.swing.JTextField jTextField5;
-    private javax.swing.JTextField jTextField6;
-    private javax.swing.JTextField jTextField7;
-    private javax.swing.JTextField jTextField8;
     // End of variables declaration//GEN-END:variables
 }
