@@ -4,8 +4,12 @@
  */
 package vista;
 
+import controlador.MedicoDAO;
 import java.awt.CardLayout;
+import java.util.List;
 import javax.swing.JDialog;
+import javax.swing.table.DefaultTableModel;
+import modelo.Medico;
 
 
 public class Inicio extends javax.swing.JFrame {
@@ -18,10 +22,74 @@ public class Inicio extends javax.swing.JFrame {
         setSize(1400, 800); 
         setResizable(false); 
         setLocationRelativeTo(null);
+        
+        cargarTablaMedicos();
+        
         setVisible(true);
         
     }
     
+    private void cargarTablaMedicos() {
+
+        DefaultTableModel modelo = new DefaultTableModel();
+
+        modelo.addColumn("ID");
+        modelo.addColumn("Nombre");
+        modelo.addColumn("Apellido");
+        modelo.addColumn("Departamento");
+        modelo.addColumn("Dirección");
+        modelo.addColumn("Teléfono");
+
+        MedicoDAO medicoDAO = new MedicoDAO();
+
+        List<Medico> listaMedicos = medicoDAO.obtenerTodos();
+
+        for (Medico medico : listaMedicos) {
+
+            modelo.addRow(new Object[]{
+                medico.getIdMedico(),
+                medico.getNombre(),
+                medico.getApellido(),
+                medico.getNumeroDepartamento(),
+                medico.getDireccion(),
+                medico.getTelefono()
+            });
+        }
+
+        jTable1.setModel(modelo);
+    }
+    
+    private void buscarMedicos() {
+
+        String texto = jTextField1.getText().trim();
+
+        DefaultTableModel modelo = new DefaultTableModel();
+
+        modelo.addColumn("ID");
+        modelo.addColumn("Nombre");
+        modelo.addColumn("Apellido");
+        modelo.addColumn("Departamento");
+        modelo.addColumn("Dirección");
+        modelo.addColumn("Teléfono");
+
+        MedicoDAO medicoDAO = new MedicoDAO();
+
+        List<Medico> lista = medicoDAO.buscar(texto);
+
+        for (Medico medico : lista) {
+
+            modelo.addRow(new Object[]{
+                medico.getIdMedico(),
+                medico.getNombre(),
+                medico.getApellido(),
+                medico.getNumeroDepartamento(),
+                medico.getDireccion(),
+                medico.getTelefono()
+            });
+        }
+
+        jTable1.setModel(modelo);
+    }
 
     
     
@@ -147,6 +215,11 @@ public class Inicio extends javax.swing.JFrame {
         jTextField1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jTextField1ActionPerformed(evt);
+            }
+        });
+        jTextField1.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                jTextField1KeyReleased(evt);
             }
         });
         jPanel3.add(jTextField1);
@@ -324,7 +397,7 @@ public class Inicio extends javax.swing.JFrame {
         dialog.setLocationRelativeTo(this);
         dialog.setVisible(true); 
       
-        
+        cargarTablaMedicos();
         
     }//GEN-LAST:event_jButton7ActionPerformed
 
@@ -347,6 +420,11 @@ public class Inicio extends javax.swing.JFrame {
     private void jButton13ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton13ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jButton13ActionPerformed
+
+    private void jTextField1KeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextField1KeyReleased
+        // TODO add your handling code here:
+        buscarMedicos(); 
+    }//GEN-LAST:event_jTextField1KeyReleased
 
     /**
      * @param args the command line arguments
