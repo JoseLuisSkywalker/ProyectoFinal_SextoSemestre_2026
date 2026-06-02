@@ -232,6 +232,7 @@ public class Inicio extends javax.swing.JFrame {
         jButton3 = new javax.swing.JButton();
         jButton4 = new javax.swing.JButton();
         jPanel2 = new javax.swing.JPanel();
+        jPanel4 = new javax.swing.JPanel();
         jPanel3 = new javax.swing.JPanel();
         jTextField1 = new javax.swing.JTextField();
         jButton7 = new javax.swing.JButton();
@@ -307,6 +308,11 @@ public class Inicio extends javax.swing.JFrame {
 
         jPanel2.setBackground(new java.awt.Color(160, 164, 165));
         jPanel2.setLayout(new java.awt.CardLayout());
+
+        jPanel4.setBackground(new java.awt.Color(20, 40, 51));
+        jPanel4.setToolTipText("");
+        jPanel4.setLayout(null);
+        jPanel2.add(jPanel4, "inicio");
 
         jPanel3.setBackground(new java.awt.Color(20, 40, 51));
         jPanel3.setToolTipText("");
@@ -478,7 +484,7 @@ public class Inicio extends javax.swing.JFrame {
         // TODO add your handling code here:
         CardLayout cl = (CardLayout) jPanel2.getLayout();
         cl.show(jPanel2, "citas");
-        System.out.println("Switched to pacientes");
+        System.out.println("Switched to citas");
     }//GEN-LAST:event_jButton3ActionPerformed
 
     private void jButton7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton7ActionPerformed
@@ -518,8 +524,9 @@ public class Inicio extends javax.swing.JFrame {
 
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
         // TODO add your handling code here:
-        
-        
+        CardLayout cl = (CardLayout) jPanel2.getLayout();
+        System.out.println(cl);
+        cl.show(jPanel2, "inicio");
     }//GEN-LAST:event_jButton4ActionPerformed
 
     /**
@@ -541,6 +548,7 @@ public class Inicio extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
+    private javax.swing.JPanel jPanel4;
     private javax.swing.JPanel jPanel5;
     private javax.swing.JPanel jPanel6;
     private javax.swing.JScrollPane jScrollPane1;
