@@ -6,22 +6,42 @@ package vista;
 
 import controlador.MedicoDAO;
 import java.awt.CardLayout;
+import java.awt.Color;
 import java.util.List;
+import javax.swing.ImageIcon;
 import javax.swing.JDialog;
 import javax.swing.table.DefaultTableModel;
 import modelo.Medico;
+import com.formdev.flatlaf.FlatDarkLaf; 
+import javax.swing.UIManager; 
 
 
 public class Inicio extends javax.swing.JFrame {
     
     private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(Inicio.class.getName());
-
+    
+    //iconos instanciados
+    private ImageIcon iconEditar; 
+    private ImageIcon iconEliminar; 
   
     public Inicio() {
         initComponents();
+        
+        //cambios estéticos
+        iconEditar = new ImageIcon(getClass().getResource("/iconos/editar.png"));
+
+        iconEliminar = new ImageIcon(getClass().getResource("/iconos/eliminar.png"));
+        
+        iconEditar = escalarIcono(new ImageIcon(getClass().getResource("/iconos/editar.png")),45, 45);
+
+        iconEliminar = escalarIcono(new ImageIcon(getClass().getResource("/iconos/eliminar.png")),45, 45);
+        
+        //para la ventana
         setSize(1400, 800); 
         setResizable(false); 
         setLocationRelativeTo(null);
+        
+        //para la tabla 
         
         cargarTablaMedicos();
         
@@ -31,7 +51,14 @@ public class Inicio extends javax.swing.JFrame {
     
     private void cargarTablaMedicos() {
 
-        DefaultTableModel modelo = new DefaultTableModel();
+        DefaultTableModel modelo = new DefaultTableModel() {
+
+        @Override
+        public boolean isCellEditable(int row, int column) {
+
+            return column == 6 || column == 7;
+        }
+    };
 
         modelo.addColumn("ID");
         modelo.addColumn("Nombre");
@@ -39,6 +66,8 @@ public class Inicio extends javax.swing.JFrame {
         modelo.addColumn("Departamento");
         modelo.addColumn("Dirección");
         modelo.addColumn("Teléfono");
+        modelo.addColumn("M"); 
+        modelo.addColumn("E"); 
 
         MedicoDAO medicoDAO = new MedicoDAO();
 
@@ -52,11 +81,15 @@ public class Inicio extends javax.swing.JFrame {
                 medico.getApellido(),
                 medico.getNumeroDepartamento(),
                 medico.getDireccion(),
-                medico.getTelefono()
+                medico.getTelefono(),
+                "M", 
+                "E"
             });
         }
 
         jTable1.setModel(modelo);
+        configurarTabla(); 
+        
     }
     
     private void buscarMedicos() {
@@ -71,6 +104,8 @@ public class Inicio extends javax.swing.JFrame {
         modelo.addColumn("Departamento");
         modelo.addColumn("Dirección");
         modelo.addColumn("Teléfono");
+        modelo.addColumn("M");
+        modelo.addColumn("E");
 
         MedicoDAO medicoDAO = new MedicoDAO();
 
@@ -84,13 +119,105 @@ public class Inicio extends javax.swing.JFrame {
                 medico.getApellido(),
                 medico.getNumeroDepartamento(),
                 medico.getDireccion(),
-                medico.getTelefono()
+                medico.getTelefono(),
+                "M",
+                "E"
             });
         }
 
         jTable1.setModel(modelo);
+        
+        // esto es para los botones que estan en la tabla
+        configurarTabla();
+        
+       
     }
+    
+    // para eliminar el médico utilizando id_medico
+    public void eliminarMedico(int fila) {
 
+        int idMedico = Integer.parseInt(jTable1.getValueAt(fila, 0).toString());
+
+        MedicoDAO dao = new MedicoDAO();
+
+        dao.eliminar(idMedico);
+
+        cargarTablaMedicos();
+    }
+    
+    
+    public void modificarMedico(int fila) {
+
+        int idMedico = Integer.parseInt(jTable1.getValueAt(fila, 0).toString());
+
+        String nombre = jTable1.getValueAt(fila, 1).toString();
+
+        String apellido = jTable1.getValueAt(fila, 2).toString();
+
+        int departamento = Integer.parseInt(jTable1.getValueAt(fila, 3).toString());
+
+        String direccion = jTable1.getValueAt(fila, 4).toString();
+
+        String telefono = jTable1.getValueAt(fila, 5).toString();
+
+        Medico medico = new Medico(
+                idMedico,
+                nombre,
+                apellido,
+                departamento,
+                direccion,
+                telefono
+        );
+
+        DialogModificarMedico dialog = new DialogModificarMedico(this, true, medico);
+
+        dialog.setVisible(true);
+
+        cargarTablaMedicos();
+    }
+    
+    
+    //métodos estéticos: 
+    private ImageIcon escalarIcono(ImageIcon icono, int ancho, int alto) {
+
+    java.awt.Image imagen = icono.getImage();
+
+    java.awt.Image imagenEscalada = imagen.getScaledInstance(
+            ancho,
+            alto,
+            java.awt.Image.SCALE_SMOOTH
+    );
+
+    return new ImageIcon(imagenEscalada);
+    }
+    
+    
+    private void configurarTabla() {
+
+        jTable1.setRowHeight(30);
+
+        jTable1.getColumn("M").setCellRenderer(new ButtonRenderer(iconEditar, new Color(52, 152, 219)));
+
+        jTable1.getColumn("E").setCellRenderer(new ButtonRenderer(iconEliminar, new Color(231, 76, 60)));
+
+        jTable1.getColumn("M").setMaxWidth(35);
+        jTable1.getColumn("E").setMaxWidth(35);
+
+        jTable1.getColumn("M").setMinWidth(35);
+        jTable1.getColumn("E").setMinWidth(35);
+        
+        
+        jTable1.getColumn("M").setCellEditor(new ButtonEditor(iconEditar,new Color(52, 152, 219),e -> {
+            int fila = jTable1.getSelectedRow();
+            modificarMedico(fila);
+        }));
+
+        jTable1.getColumn("E").setCellEditor(new ButtonEditor(iconEliminar,new Color(231, 76, 60),e -> {
+            int fila = jTable1.getSelectedRow();
+            eliminarMedico(fila);
+        }));
+       
+    }
     
     
     
@@ -104,8 +231,6 @@ public class Inicio extends javax.swing.JFrame {
         jButton2 = new javax.swing.JButton();
         jButton3 = new javax.swing.JButton();
         jButton4 = new javax.swing.JButton();
-        jButton5 = new javax.swing.JButton();
-        jButton6 = new javax.swing.JButton();
         jPanel2 = new javax.swing.JPanel();
         jPanel3 = new javax.swing.JPanel();
         jTextField1 = new javax.swing.JTextField();
@@ -145,7 +270,7 @@ public class Inicio extends javax.swing.JFrame {
             }
         });
         jPanel1.add(jButton1);
-        jButton1.setBounds(0, 250, 300, 60);
+        jButton1.setBounds(0, 330, 300, 60);
 
         jButton2.setBackground(new java.awt.Color(91, 123, 140));
         jButton2.setText("Pacientes");
@@ -155,7 +280,7 @@ public class Inicio extends javax.swing.JFrame {
             }
         });
         jPanel1.add(jButton2);
-        jButton2.setBounds(0, 330, 300, 60);
+        jButton2.setBounds(0, 410, 300, 60);
 
         jButton3.setBackground(new java.awt.Color(91, 123, 140));
         jButton3.setText("Citas");
@@ -165,40 +290,17 @@ public class Inicio extends javax.swing.JFrame {
             }
         });
         jPanel1.add(jButton3);
-        jButton3.setBounds(0, 410, 300, 60);
+        jButton3.setBounds(0, 490, 300, 60);
 
         jButton4.setBackground(new java.awt.Color(91, 123, 140));
-        jButton4.setText("Reporte");
-        jButton4.setBorder(null);
+        jButton4.setText("Inicio");
         jButton4.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton4ActionPerformed(evt);
             }
         });
         jPanel1.add(jButton4);
-        jButton4.setBounds(0, 490, 300, 60);
-
-        jButton5.setBackground(new java.awt.Color(91, 123, 140));
-        jButton5.setText("Gráfica");
-        jButton5.setBorder(null);
-        jButton5.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton5ActionPerformed(evt);
-            }
-        });
-        jPanel1.add(jButton5);
-        jButton5.setBounds(0, 570, 300, 60);
-
-        jButton6.setBackground(new java.awt.Color(91, 123, 140));
-        jButton6.setText("Información");
-        jButton6.setBorder(null);
-        jButton6.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton6ActionPerformed(evt);
-            }
-        });
-        jPanel1.add(jButton6);
-        jButton6.setBounds(0, 650, 300, 60);
+        jButton4.setBounds(0, 250, 300, 60);
 
         getContentPane().add(jPanel1);
         jPanel1.setBounds(0, 0, 300, 800);
@@ -206,7 +308,7 @@ public class Inicio extends javax.swing.JFrame {
         jPanel2.setBackground(new java.awt.Color(160, 164, 165));
         jPanel2.setLayout(new java.awt.CardLayout());
 
-        jPanel3.setBackground(new java.awt.Color(51, 0, 51));
+        jPanel3.setBackground(new java.awt.Color(20, 40, 51));
         jPanel3.setToolTipText("");
         jPanel3.setLayout(null);
 
@@ -260,7 +362,7 @@ public class Inicio extends javax.swing.JFrame {
 
         jPanel2.add(jPanel3, "medicos");
 
-        jPanel5.setBackground(new java.awt.Color(51, 0, 51));
+        jPanel5.setBackground(new java.awt.Color(20, 40, 51));
         jPanel5.setToolTipText("Buscar Pacientes");
         jPanel5.setLayout(null);
 
@@ -306,7 +408,7 @@ public class Inicio extends javax.swing.JFrame {
 
         jPanel2.add(jPanel5, "pacientes");
 
-        jPanel6.setBackground(new java.awt.Color(51, 0, 51));
+        jPanel6.setBackground(new java.awt.Color(20, 40, 51));
         jPanel6.setToolTipText("Buscar Citas");
         jPanel6.setLayout(null);
 
@@ -379,18 +481,6 @@ public class Inicio extends javax.swing.JFrame {
         System.out.println("Switched to pacientes");
     }//GEN-LAST:event_jButton3ActionPerformed
 
-    private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jButton4ActionPerformed
-
-    private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jButton5ActionPerformed
-
-    private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton6ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jButton6ActionPerformed
-
     private void jButton7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton7ActionPerformed
         // TODO add your handling code here:
         DialogAnadirMedico dialog = new DialogAnadirMedico(this, true);
@@ -426,6 +516,12 @@ public class Inicio extends javax.swing.JFrame {
         buscarMedicos(); 
     }//GEN-LAST:event_jTextField1KeyReleased
 
+    private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
+        // TODO add your handling code here:
+        
+        
+    }//GEN-LAST:event_jButton4ActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -438,8 +534,6 @@ public class Inicio extends javax.swing.JFrame {
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton4;
-    private javax.swing.JButton jButton5;
-    private javax.swing.JButton jButton6;
     private javax.swing.JButton jButton7;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;

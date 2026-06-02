@@ -30,7 +30,6 @@ public class MedicoDAO implements InterfazMedicoDAO {
     }
 
     @Override
-
     public boolean insertar(Medico medico) {
 
         String sql =
@@ -62,7 +61,6 @@ public class MedicoDAO implements InterfazMedicoDAO {
     }
 
     @Override
-
     public boolean actualizar(Medico medico) {
 
         String sql =
@@ -102,7 +100,6 @@ public class MedicoDAO implements InterfazMedicoDAO {
     }
 
     @Override
-
     public boolean eliminar(int idMedico) {
 
         String sql =
@@ -122,7 +119,6 @@ public class MedicoDAO implements InterfazMedicoDAO {
     }
 
     @Override
-
     public Medico buscarPorId(int idMedico) {
 
         String sql =
@@ -168,7 +164,6 @@ public class MedicoDAO implements InterfazMedicoDAO {
     }
 
     @Override
-
     public List<Medico> obtenerTodos() {
 
         List<Medico> lista = new ArrayList<>();
@@ -220,7 +215,6 @@ public class MedicoDAO implements InterfazMedicoDAO {
     }
 
     @Override
-
     public List<Medico> buscar(String texto) {
 
         List<Medico> lista = new ArrayList<>();

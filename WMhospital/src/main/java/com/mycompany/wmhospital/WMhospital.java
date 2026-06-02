@@ -2,24 +2,26 @@
 package com.mycompany.wmhospital;
 
 
+import com.formdev.flatlaf.themes.FlatMacDarkLaf;
 import conexion.ConexionBD;
+import javax.swing.JDialog;
+import javax.swing.JFrame;
 import javax.swing.SwingUtilities;
+import javax.swing.UIManager;
 import vista.Inicio;
 
 public class WMhospital {
 
     public static void main(String[] args) {
-        
-        SwingUtilities.invokeLater(new Runnable() {
-            @Override
-            public void run() {
 
-                new Inicio(); 
-                
-                ConexionBD conexion = new ConexionBD();
-                conexion.abrirConexion();
+        FlatMacDarkLaf.setup();
 
-            }
+        java.awt.EventQueue.invokeLater(() -> {
+
+            new Inicio().setVisible(true);
+
         });
+
     }
+
 }

@@ -8,6 +8,7 @@ import java.awt.Color;
 import java.awt.Component;
 import java.awt.event.ActionListener;
 import javax.swing.AbstractCellEditor;
+import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JTable;
 import javax.swing.table.TableCellEditor;
@@ -20,9 +21,9 @@ public class ButtonEditor extends AbstractCellEditor implements TableCellEditor{
     private JButton boton; 
     private String accion;
     
-    public ButtonEditor(String texto, Color color, ActionListener listener){
-        boton = new JButton(texto); 
-        boton.setBackground(color);
+    public ButtonEditor(ImageIcon icono, Color color, ActionListener listener){
+        boton = new JButton(); 
+        boton.setIcon(icono); 
         boton.setForeground(Color.WHITE);
         boton.setOpaque(true); 
         boton.setBorderPainted(false); 

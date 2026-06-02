@@ -6,6 +6,7 @@ package vista;
 
 import java.awt.Color;
 import java.awt.Component;
+import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JTable;
 import javax.swing.table.TableCellRenderer;
@@ -16,14 +17,22 @@ import javax.swing.table.TableCellRenderer;
  */
 public class ButtonRenderer extends JButton implements TableCellRenderer {
     
-    public ButtonRenderer(String texto, Color color){
-        setText(texto);
+    public ButtonRenderer(ImageIcon icono, Color color) {
+
+        setIcon(icono);
         setBackground(color);
-        setForeground(Color.WHITE);
-        setOpaque(true);
-        setBorderPainted(false); 
-        setFocusPainted(false); 
         
+        setOpaque(true);
+        setBorderPainted(false);
+        setFocusPainted(false);
+       
+
+        setHorizontalAlignment(CENTER);
+
+        setVerticalAlignment(CENTER);
+        
+        setPreferredSize(new java.awt.Dimension(28, 28));
+
     }
 
     @Override

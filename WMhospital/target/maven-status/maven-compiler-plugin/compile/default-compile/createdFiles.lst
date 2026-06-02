@@ -4,6 +4,7 @@ vista/DialogAnadirMedico$5.class
 vista/Inicio$5.class
 vista/ButtonEditor.class
 modelo/Medico.class
+vista/DialogModificarMedico$2.class
 com/mycompany/wmhospital/WMhospital.class
 vista/Inicio$10.class
 vista/Inicio$1.class
@@ -16,16 +17,17 @@ vista/DialogAnadirMedico.class
 conexion/ConexionBDPrueba.class
 vista/Inicio$12.class
 vista/Inicio$4.class
+vista/DialogModificarMedico$1.class
 vista/Inicio$9.class
 modelo/ResultSetTableModel.class
 vista/Inicio$11.class
 vista/DialogAnadirMedico$1.class
 vista/Inicio$2.class
+vista/DialogModificarMedico$3.class
 vista/Inicio$6.class
 intefaces/InterfazMedicoDAO.class
 vista/DialogAnadirMedico$3.class
-vista/Inicio$13.class
 vista/ButtonRenderer.class
-com/mycompany/wmhospital/WMhospital$1.class
+vista/DialogModificarMedico.class
 vista/Inicio$3.class
 vista/Inicio$8.class
