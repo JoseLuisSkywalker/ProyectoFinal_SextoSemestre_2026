@@ -2,6 +2,7 @@ package vista;
 
 
 import controlador.MedicoDAO;
+import java.util.List;
 import javax.swing.JOptionPane;
 import javax.swing.text.MaskFormatter;
 import modelo.Medico;
@@ -18,7 +19,8 @@ import modelo.Medico;
 public class DialogAnadirPaciente extends javax.swing.JDialog {
     
     private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(DialogAnadirPaciente.class.getName());
-
+    
+    private List<Medico> listaMedicos;
     /**
      * Creates new form DialogAnadirMedico
      */
@@ -41,7 +43,38 @@ public class DialogAnadirPaciente extends javax.swing.JDialog {
         } catch (java.text.ParseException e){
             e.printStackTrace();
         }
+        
+        cargarCombos();
+        cargarMedicos();
        
+    }
+    
+    private void cargarCombos() {
+
+        jComboBox2.removeAllItems();
+        jComboBox2.addItem("Masculino");
+        jComboBox2.addItem("Femenino");
+        jComboBox3.removeAllItems();
+        jComboBox3.addItem("Soltero");
+        jComboBox3.addItem("Casado");
+        jComboBox3.addItem("Divorciado");
+        jComboBox3.addItem("Viudo");
+
+    }
+
+    private void cargarMedicos() {
+
+        MedicoDAO medicoDAO = new MedicoDAO();
+        listaMedicos = medicoDAO.obtenerTodos();
+        jComboBox4.removeAllItems();
+        
+        for (Medico medico : listaMedicos) {
+
+            jComboBox4.addItem(medico.getIdMedico() + " - " + medico.getNombre() + " " + medico.getApellido());
+
+        }
+
+        medicoDAO.cerrarConexion();
     }
 
 
