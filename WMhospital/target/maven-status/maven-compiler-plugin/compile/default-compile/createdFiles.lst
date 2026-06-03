@@ -1,4 +1,5 @@
 conexion/ConexionBD.class
+vista/DialogAnadirPaciente$2.class
 vista/DialogAnadirMedico$5$1.class
 vista/DialogAnadirMedico$5.class
 vista/Inicio$5.class
@@ -10,6 +11,8 @@ vista/Inicio$10.class
 vista/Inicio$1.class
 vista/Inicio$7.class
 vista/DialogAnadirMedico$2.class
+controlador/PacienteDAO.class
+modelo/Paciente.class
 controlador/MedicoDAO.class
 vista/Inicio.class
 vista/DialogAnadirMedico$4.class
@@ -19,10 +22,12 @@ vista/Inicio$12.class
 vista/Inicio$4.class
 vista/DialogModificarMedico$1.class
 vista/Inicio$9.class
+vista/DialogAnadirPaciente.class
 modelo/ResultSetTableModel.class
 vista/Inicio$11.class
 vista/DialogAnadirMedico$1.class
 vista/Inicio$2.class
+vista/DialogAnadirPaciente$1.class
 vista/DialogModificarMedico$3.class
 vista/Inicio$6.class
 intefaces/InterfazMedicoDAO.class
@@ -30,4 +35,5 @@ vista/DialogAnadirMedico$3.class
 vista/ButtonRenderer.class
 vista/DialogModificarMedico.class
 vista/Inicio$3.class
+intefaces/InterfazPacienteDAO.class
 vista/Inicio$8.class
