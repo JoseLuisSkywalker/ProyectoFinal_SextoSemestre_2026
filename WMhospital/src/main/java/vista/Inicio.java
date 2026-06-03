@@ -582,6 +582,7 @@ public class Inicio extends javax.swing.JFrame {
         jButton2 = new javax.swing.JButton();
         jButton3 = new javax.swing.JButton();
         jButton4 = new javax.swing.JButton();
+        jLabel4 = new javax.swing.JLabel();
         jPanel2 = new javax.swing.JPanel();
         jPanel4 = new javax.swing.JPanel();
         jPanel3 = new javax.swing.JPanel();
@@ -615,44 +616,68 @@ public class Inicio extends javax.swing.JFrame {
         jPanel1.setLayout(null);
 
         jButton1.setBackground(new java.awt.Color(91, 123, 140));
-        jButton1.setText("Medicos");
+        jButton1.setFont(new java.awt.Font(".AppleSystemUIFont", 1, 36)); // NOI18N
+        jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/iconos/Medico.png"))); // NOI18N
+        jButton1.setText("   Medicos");
+        jButton1.setBorder(null);
+        jButton1.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton1ActionPerformed(evt);
             }
         });
         jPanel1.add(jButton1);
-        jButton1.setBounds(0, 330, 300, 60);
+        jButton1.setBounds(0, 390, 300, 60);
 
         jButton2.setBackground(new java.awt.Color(91, 123, 140));
-        jButton2.setText("Pacientes");
+        jButton2.setFont(new java.awt.Font(".AppleSystemUIFont", 1, 36)); // NOI18N
+        jButton2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/iconos/Paciente.png"))); // NOI18N
+        jButton2.setText("   Pacientes");
+        jButton2.setToolTipText("");
+        jButton2.setBorder(null);
+        jButton2.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         jButton2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton2ActionPerformed(evt);
             }
         });
         jPanel1.add(jButton2);
-        jButton2.setBounds(0, 410, 300, 60);
+        jButton2.setBounds(0, 470, 300, 60);
 
         jButton3.setBackground(new java.awt.Color(91, 123, 140));
-        jButton3.setText("Citas");
+        jButton3.setFont(new java.awt.Font(".AppleSystemUIFont", 1, 36)); // NOI18N
+        jButton3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/iconos/Cita.png"))); // NOI18N
+        jButton3.setText("   Citas");
+        jButton3.setBorder(null);
+        jButton3.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         jButton3.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton3ActionPerformed(evt);
             }
         });
         jPanel1.add(jButton3);
-        jButton3.setBounds(0, 490, 300, 60);
+        jButton3.setBounds(0, 550, 300, 60);
 
         jButton4.setBackground(new java.awt.Color(91, 123, 140));
-        jButton4.setText("Inicio");
+        jButton4.setFont(new java.awt.Font(".AppleSystemUIFont", 1, 36)); // NOI18N
+        jButton4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/iconos/Dashboard.png"))); // NOI18N
+        jButton4.setText("   Inicio");
+        jButton4.setBorder(null);
+        jButton4.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         jButton4.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton4ActionPerformed(evt);
             }
         });
         jPanel1.add(jButton4);
-        jButton4.setBounds(0, 250, 300, 60);
+        jButton4.setBounds(0, 310, 300, 60);
+
+        jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/iconos/logo.png"))); // NOI18N
+        jLabel4.setToolTipText("");
+        jLabel4.setMaximumSize(new java.awt.Dimension(300, 300));
+        jLabel4.setMinimumSize(new java.awt.Dimension(300, 300));
+        jPanel1.add(jLabel4);
+        jLabel4.setBounds(50, 20, 230, 220);
 
         getContentPane().add(jPanel1);
         jPanel1.setBounds(0, 0, 300, 800);
@@ -927,6 +952,7 @@ public class Inicio extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
