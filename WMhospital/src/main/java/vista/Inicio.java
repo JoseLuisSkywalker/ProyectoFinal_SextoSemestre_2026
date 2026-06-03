@@ -9,11 +9,10 @@ import java.awt.CardLayout;
 import java.awt.Color;
 import java.util.List;
 import javax.swing.ImageIcon;
-import javax.swing.JDialog;
 import javax.swing.table.DefaultTableModel;
 import modelo.Medico;
-import com.formdev.flatlaf.FlatDarkLaf; 
-import javax.swing.UIManager; 
+import controlador.PacienteDAO;
+import modelo.Paciente;
 
 
 public class Inicio extends javax.swing.JFrame {
@@ -44,11 +43,16 @@ public class Inicio extends javax.swing.JFrame {
         //para la tabla 
         
         cargarTablaMedicos();
+        cargarTablaPacientes();
         
         setVisible(true);
         
     }
-    
+/*
+    ===========================================≠≠≠≠≠≠≠≠≠≠≠≠≠=============================================
+    ----------------------------------- METODOS PARA MEDICOS --------------------------------------------
+    =====================================================================================================
+    */
     private void cargarTablaMedicos() {
 
         DefaultTableModel modelo = new DefaultTableModel() {
@@ -86,9 +90,11 @@ public class Inicio extends javax.swing.JFrame {
                 "E"
             });
         }
-
+        
+        medicoDAO.cerrarConexion();
         jTable1.setModel(modelo);
         configurarTabla(); 
+       
         
     }
     
@@ -124,7 +130,8 @@ public class Inicio extends javax.swing.JFrame {
                 "E"
             });
         }
-
+        
+        medicoDAO.cerrarConexion();
         jTable1.setModel(modelo);
         
         // esto es para los botones que estan en la tabla
@@ -135,12 +142,19 @@ public class Inicio extends javax.swing.JFrame {
     
     // para eliminar el médico utilizando id_medico
     public void eliminarMedico(int fila) {
+        int opcion = javax.swing.JOptionPane.showConfirmDialog(this, "¿Desea eliminar este médico?", "Confirmar eliminación", javax.swing.JOptionPane.YES_NO_OPTION);
 
-        int idMedico = Integer.parseInt(jTable1.getValueAt(fila, 0).toString());
+        if (opcion != javax.swing.JOptionPane.YES_OPTION) {
+            return;
+        }
+
+        int idMedico = Integer.parseInt(
+                jTable1.getValueAt(fila, 0).toString()
+        );
 
         MedicoDAO dao = new MedicoDAO();
-
         dao.eliminar(idMedico);
+        dao.cerrarConexion();
 
         cargarTablaMedicos();
     }
@@ -218,6 +232,167 @@ public class Inicio extends javax.swing.JFrame {
         }));
        
     }
+    
+/*
+    ================================================================================================================
+    ------------------------------------------ METODOS PARA PACIENTES ----------------------------------------------
+    ================================================================================================================
+    */
+    
+    private void cargarTablaPacientes() {
+
+        DefaultTableModel modelo = new DefaultTableModel() {
+
+            @Override
+            public boolean isCellEditable(int row, int column) {
+
+                return column == 8 || column == 9;
+            }
+
+        };
+
+        modelo.addColumn("ID");
+        modelo.addColumn("Nombre");
+        modelo.addColumn("Apellido");
+        modelo.addColumn("Teléfono");
+        modelo.addColumn("Nacimiento");
+        modelo.addColumn("Sexo");
+        modelo.addColumn("Estado Civil");
+        modelo.addColumn("ID Médico");
+        modelo.addColumn("M");
+        modelo.addColumn("E");
+
+        PacienteDAO pacienteDAO = new PacienteDAO();
+        List<Paciente> listaPacientes = pacienteDAO.obtenerTodos();
+        for (Paciente paciente : listaPacientes) {
+
+            modelo.addRow(new Object[]{
+                paciente.getIdPaciente(),
+                paciente.getNombre(),
+                paciente.getApellido(),
+                paciente.getTelefono(),
+                paciente.getFechaNacimiento(),
+                paciente.getSexo(),
+                paciente.getEstadoCivil(),
+                paciente.getIdMedico(),
+                "M",
+                "E"
+            });
+
+        }
+
+        pacienteDAO.cerrarConexion();
+        jTable2.setModel(modelo);
+        configurarTablaPacientes();
+
+    }
+    
+    private void buscarPacientes() {
+
+        String texto = jTextField2.getText().trim();
+
+        DefaultTableModel modelo = new DefaultTableModel();
+        
+        modelo.addColumn("ID");
+        modelo.addColumn("Nombre");
+        modelo.addColumn("Apellido");
+        modelo.addColumn("Teléfono");
+        modelo.addColumn("Nacimiento");
+        modelo.addColumn("Sexo");
+        modelo.addColumn("Estado Civil");
+        modelo.addColumn("ID Médico");
+        modelo.addColumn("M");
+        modelo.addColumn("E");
+
+        PacienteDAO pacienteDAO = new PacienteDAO();
+
+        List<Paciente> lista = pacienteDAO.buscar(texto);
+
+        for (Paciente paciente : lista) {
+            modelo.addRow(new Object[] {
+                
+                paciente.getIdPaciente(),
+                paciente.getNombre(),
+                paciente.getApellido(),
+                paciente.getTelefono(),
+                paciente.getFechaNacimiento(),
+                paciente.getSexo(),
+                paciente.getEstadoCivil(),
+                paciente.getIdMedico(),
+                "M",
+                "E"
+
+            });
+
+        }
+
+        pacienteDAO.cerrarConexion();
+
+        jTable2.setModel(modelo);
+
+        configurarTablaPacientes();
+
+    }
+    
+    public void eliminarPaciente(int fila) {
+        int opcion = javax.swing.JOptionPane.showConfirmDialog(this, "¿Desea eliminar este paciente?", "Confirmar eliminación", javax.swing.JOptionPane.YES_NO_OPTION);
+
+        if (opcion != javax.swing.JOptionPane.YES_OPTION) {
+            return;
+        }
+
+        int idPaciente = Integer.parseInt(jTable2.getValueAt(fila, 0).toString());
+
+        PacienteDAO dao = new PacienteDAO();
+        dao.eliminar(idPaciente);
+        dao.cerrarConexion();
+        cargarTablaPacientes();
+        
+    }
+    
+    public void modificarPaciente(int fila) {
+
+        int idPaciente = Integer.parseInt(jTable2.getValueAt(fila, 0).toString());
+        PacienteDAO dao = new PacienteDAO();
+        Paciente paciente = dao.buscarPorId(idPaciente);
+        dao.cerrarConexion();
+
+        if (paciente != null) {
+
+            //DialogModificarPaciente dialog = new DialogModificarPaciente(this, true, paciente);
+
+            //dialog.setVisible(true);
+
+            cargarTablaPacientes();
+        }
+    }
+    
+    
+    // diseño y forma de la tabla para los botonsitos 
+    private void configurarTablaPacientes() {
+
+        jTable2.setRowHeight(30);
+        jTable2.getColumn("M").setCellRenderer(new ButtonRenderer(iconEditar, new Color(52, 152, 219)));
+        jTable2.getColumn("E").setCellRenderer(new ButtonRenderer(iconEliminar, new Color(231, 76, 60)));
+        jTable2.getColumn("M").setMaxWidth(35);
+        jTable2.getColumn("E").setMaxWidth(35);
+        jTable2.getColumn("M").setMinWidth(35);
+        jTable2.getColumn("E").setMinWidth(35);
+        jTable2.getColumn("M").setCellEditor(new ButtonEditor(iconEditar, new Color(52, 152, 219), e -> {
+            int fila = jTable2.getSelectedRow();
+            modificarPaciente(fila);
+        }));
+
+        jTable2.getColumn("E").setCellEditor(new ButtonEditor(iconEliminar, new Color(231, 76, 60), e -> {
+            int fila = jTable2.getSelectedRow();
+            eliminarPaciente(fila);
+        }));
+
+    }
+    
+    
+    
+    
     
     
     
@@ -377,6 +552,11 @@ public class Inicio extends javax.swing.JFrame {
                 jTextField2ActionPerformed(evt);
             }
         });
+        jTextField2.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                jTextField2KeyReleased(evt);
+            }
+        });
         jPanel5.add(jTextField2);
         jTextField2.setBounds(40, 80, 930, 50);
 
@@ -511,7 +691,7 @@ public class Inicio extends javax.swing.JFrame {
         DialogAnadirPaciente dialog = new DialogAnadirPaciente(this, true);
         dialog.setLocationRelativeTo(this);
         dialog.setVisible(true);
-        
+        cargarTablaPacientes();
         
     }//GEN-LAST:event_jButton10ActionPerformed
 
@@ -534,6 +714,11 @@ public class Inicio extends javax.swing.JFrame {
         System.out.println(cl);
         cl.show(jPanel2, "inicio");
     }//GEN-LAST:event_jButton4ActionPerformed
+
+    private void jTextField2KeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextField2KeyReleased
+        // TODO add your handling code here:
+        buscarPacientes();
+    }//GEN-LAST:event_jTextField2KeyReleased
 
     /**
      * @param args the command line arguments

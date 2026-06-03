@@ -59,7 +59,7 @@ public class ValidadorPacienteImpl implements ValidadorPaciente {
 
             if (fechaNacimiento.isBefore(hoy.minusYears(120))) {
             
-                throw new Exception("La fecha de nacimiento no es válida.");
+                throw new Exception("La fecha de nacimiento no es válida porque paciente supera expectativas de edad.");
 
             }
 

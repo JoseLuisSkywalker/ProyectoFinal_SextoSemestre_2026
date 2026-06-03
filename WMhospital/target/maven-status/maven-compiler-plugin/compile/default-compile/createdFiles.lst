@@ -15,6 +15,7 @@ intefaces/ValidadorPaciente.class
 vista/DialogAnadirMedico$1.class
 vista/Inicio$2.class
 vista/DialogAnadirPaciente$1.class
+vista/Inicio$13.class
 vista/ButtonRenderer.class
 intefaces/InterfazPacienteDAO.class
 vista/Inicio$8.class
@@ -33,6 +34,7 @@ vista/Inicio$9.class
 vista/DialogAnadirPaciente.class
 modelo/ResultSetTableModel.class
 vista/Inicio$11.class
+vista/Inicio$14.class
 vista/DialogModificarMedico$3.class
 vista/Inicio$6.class
 vista/DialogModificarPaciente$1.class
