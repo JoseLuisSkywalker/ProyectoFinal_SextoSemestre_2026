@@ -532,9 +532,9 @@ public class Inicio extends javax.swing.JFrame {
 
         if (cita != null) {
 
-            //DialogModificarCita dialog = new DialogModificarCita(this, true, cita);
+            DialogModificarCita dialog = new DialogModificarCita(this, true, cita);
 
-            //dialog.setVisible(true);
+            dialog.setVisible(true);
 
             cargarTablaCitas();
         }

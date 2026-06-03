@@ -6,6 +6,7 @@ vista/ButtonEditor.class
 vista/DialogModificarMedico$2.class
 vista/Inicio$10.class
 vista/Inicio$1.class
+vista/DialogModificarCita.class
 controlador/PacienteDAO.class
 vista/DialogAnadirMedico$4.class
 vista/DialogAnadirMedico.class
@@ -31,6 +32,7 @@ com/mycompany/wmhospital/WMhospital.class
 vista/Inicio$15.class
 vista/DialogAnadirCita.class
 vista/Inicio$7.class
+vista/DialogModificarCita$2.class
 vista/DialogAnadirMedico$2.class
 modelo/Paciente.class
 controlador/MedicoDAO.class
@@ -52,6 +54,7 @@ intefaces/InterfazMedicoDAO.class
 vista/DialogAnadirMedico$3.class
 vista/DialogAnadirCita$2.class
 vista/DialogModificarPaciente.class
+vista/DialogModificarCita$1.class
 vista/DialogModificarMedico.class
 vista/Inicio$3.class
 intefaces/ValidadorMedico.class
