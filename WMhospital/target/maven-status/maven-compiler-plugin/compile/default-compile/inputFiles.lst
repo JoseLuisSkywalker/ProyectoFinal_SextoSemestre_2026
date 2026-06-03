@@ -4,6 +4,7 @@
 /Users/josesanchez/Computer Engineering Semesters/SextoSemestre/AdministracionBD/ProyectoFinal/WMhospital/src/main/java/controlador/CitaDAO.java
 /Users/josesanchez/Computer Engineering Semesters/SextoSemestre/AdministracionBD/ProyectoFinal/WMhospital/src/main/java/controlador/MedicoDAO.java
 /Users/josesanchez/Computer Engineering Semesters/SextoSemestre/AdministracionBD/ProyectoFinal/WMhospital/src/main/java/controlador/PacienteDAO.java
+/Users/josesanchez/Computer Engineering Semesters/SextoSemestre/AdministracionBD/ProyectoFinal/WMhospital/src/main/java/intefaces/InterfazCitaDAO.java
 /Users/josesanchez/Computer Engineering Semesters/SextoSemestre/AdministracionBD/ProyectoFinal/WMhospital/src/main/java/intefaces/InterfazMedicoDAO.java
 /Users/josesanchez/Computer Engineering Semesters/SextoSemestre/AdministracionBD/ProyectoFinal/WMhospital/src/main/java/intefaces/InterfazPacienteDAO.java
 /Users/josesanchez/Computer Engineering Semesters/SextoSemestre/AdministracionBD/ProyectoFinal/WMhospital/src/main/java/intefaces/ValidadorMedico.java
@@ -16,6 +17,7 @@
 /Users/josesanchez/Computer Engineering Semesters/SextoSemestre/AdministracionBD/ProyectoFinal/WMhospital/src/main/java/validaciones/ValidadorPacienteImpl.java
 /Users/josesanchez/Computer Engineering Semesters/SextoSemestre/AdministracionBD/ProyectoFinal/WMhospital/src/main/java/vista/ButtonEditor.java
 /Users/josesanchez/Computer Engineering Semesters/SextoSemestre/AdministracionBD/ProyectoFinal/WMhospital/src/main/java/vista/ButtonRenderer.java
+/Users/josesanchez/Computer Engineering Semesters/SextoSemestre/AdministracionBD/ProyectoFinal/WMhospital/src/main/java/vista/DialogAnadirCita.java
 /Users/josesanchez/Computer Engineering Semesters/SextoSemestre/AdministracionBD/ProyectoFinal/WMhospital/src/main/java/vista/DialogAnadirMedico.java
 /Users/josesanchez/Computer Engineering Semesters/SextoSemestre/AdministracionBD/ProyectoFinal/WMhospital/src/main/java/vista/DialogAnadirPaciente.java
 /Users/josesanchez/Computer Engineering Semesters/SextoSemestre/AdministracionBD/ProyectoFinal/WMhospital/src/main/java/vista/DialogModificarMedico.java
