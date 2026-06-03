@@ -1,7 +1,10 @@
 package validaciones;
 
 import intefaces.ValidadorPaciente;
-import intefaces.ValidadorPaciente;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
+import java.time.format.DateTimeParseException;
+import java.time.format.ResolverStyle;
 import modelo.Paciente;
 
 public class ValidadorPacienteImpl implements ValidadorPaciente {
@@ -31,10 +34,39 @@ public class ValidadorPacienteImpl implements ValidadorPaciente {
             throw new Exception("El teléfono es obligatorio.");
         }
 
-        if (paciente.getFechaNacimiento() == null
-                || paciente.getFechaNacimiento().trim().isEmpty()) {
+        if (paciente.getFechaNacimiento() == null || paciente.getFechaNacimiento().trim().isEmpty()) {
 
-            throw new Exception("La fecha de nacimiento es obligatoria.");
+        throw new Exception("La fecha de nacimiento es obligatoria.");
+
+        }
+
+        try {
+            DateTimeFormatter formatter =
+
+            DateTimeFormatter.ofPattern("dd-MM-uuuu")
+
+                             .withResolverStyle(ResolverStyle.STRICT);
+
+            LocalDate fechaNacimiento = LocalDate.parse( paciente.getFechaNacimiento(), formatter);
+
+            LocalDate hoy = LocalDate.now();
+
+            if (fechaNacimiento.isAfter(hoy)) {
+
+                throw new Exception("La fecha de nacimiento no puede ser posterior a la fecha actual.");
+
+            }
+
+            if (fechaNacimiento.isBefore(hoy.minusYears(120))) {
+            
+                throw new Exception("La fecha de nacimiento no es válida.");
+
+            }
+
+        } catch (DateTimeParseException e) {
+
+            throw new Exception("Ingrese una fecha correcta (DD-MM-AAAA)");
+
         }
 
         if (paciente.getSexo() == null

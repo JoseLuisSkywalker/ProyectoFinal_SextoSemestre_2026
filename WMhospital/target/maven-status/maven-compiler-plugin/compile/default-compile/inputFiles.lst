@@ -5,12 +5,15 @@
 /Users/josesanchez/Computer Engineering Semesters/SextoSemestre/AdministracionBD/ProyectoFinal/WMhospital/src/main/java/controlador/PacienteDAO.java
 /Users/josesanchez/Computer Engineering Semesters/SextoSemestre/AdministracionBD/ProyectoFinal/WMhospital/src/main/java/intefaces/InterfazMedicoDAO.java
 /Users/josesanchez/Computer Engineering Semesters/SextoSemestre/AdministracionBD/ProyectoFinal/WMhospital/src/main/java/intefaces/InterfazPacienteDAO.java
+/Users/josesanchez/Computer Engineering Semesters/SextoSemestre/AdministracionBD/ProyectoFinal/WMhospital/src/main/java/intefaces/ValidadorPaciente.java
 /Users/josesanchez/Computer Engineering Semesters/SextoSemestre/AdministracionBD/ProyectoFinal/WMhospital/src/main/java/modelo/Medico.java
 /Users/josesanchez/Computer Engineering Semesters/SextoSemestre/AdministracionBD/ProyectoFinal/WMhospital/src/main/java/modelo/Paciente.java
 /Users/josesanchez/Computer Engineering Semesters/SextoSemestre/AdministracionBD/ProyectoFinal/WMhospital/src/main/java/modelo/ResultSetTableModel.java
+/Users/josesanchez/Computer Engineering Semesters/SextoSemestre/AdministracionBD/ProyectoFinal/WMhospital/src/main/java/validaciones/ValidadorPacienteImpl.java
 /Users/josesanchez/Computer Engineering Semesters/SextoSemestre/AdministracionBD/ProyectoFinal/WMhospital/src/main/java/vista/ButtonEditor.java
 /Users/josesanchez/Computer Engineering Semesters/SextoSemestre/AdministracionBD/ProyectoFinal/WMhospital/src/main/java/vista/ButtonRenderer.java
 /Users/josesanchez/Computer Engineering Semesters/SextoSemestre/AdministracionBD/ProyectoFinal/WMhospital/src/main/java/vista/DialogAnadirMedico.java
 /Users/josesanchez/Computer Engineering Semesters/SextoSemestre/AdministracionBD/ProyectoFinal/WMhospital/src/main/java/vista/DialogAnadirPaciente.java
 /Users/josesanchez/Computer Engineering Semesters/SextoSemestre/AdministracionBD/ProyectoFinal/WMhospital/src/main/java/vista/DialogModificarMedico.java
+/Users/josesanchez/Computer Engineering Semesters/SextoSemestre/AdministracionBD/ProyectoFinal/WMhospital/src/main/java/vista/DialogModificarPaciente.java
 /Users/josesanchez/Computer Engineering Semesters/SextoSemestre/AdministracionBD/ProyectoFinal/WMhospital/src/main/java/vista/Inicio.java

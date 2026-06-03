@@ -1,11 +1,15 @@
 package vista;
 
 
+import controlador.PacienteDAO;
 import controlador.MedicoDAO;
+import intefaces.ValidadorPaciente;
+import validaciones.ValidadorPacienteImpl;
 import java.util.List;
 import javax.swing.JOptionPane;
 import javax.swing.text.MaskFormatter;
 import modelo.Medico;
+import modelo.Paciente;
 
 /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
@@ -30,30 +34,30 @@ public class DialogAnadirPaciente extends javax.swing.JDialog {
         setSize(400, 350);
         setResizable(false);
         setLocationRelativeTo(parent);
-        
-        
-        
+        cargarCombos();
+        cargarMedicos();
+
         try {
             MaskFormatter maskTel = new MaskFormatter("### - ### - ####");
             maskTel.setPlaceholderCharacter('0');
-            jFormattedTextField2.setFormatterFactory(
-                    new javax.swing.text.DefaultFormatterFactory(maskTel)
-            );
-            
-        } catch (java.text.ParseException e){
+            jFormattedTextField2.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(maskTel));
+
+            MaskFormatter maskFecha = new MaskFormatter("##-##-####");
+            maskFecha.setPlaceholderCharacter('0');
+            jFormattedTextField3.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(maskFecha));
+
+        } catch (Exception e) {
+
             e.printStackTrace();
         }
-        
-        cargarCombos();
-        cargarMedicos();
-       
+
     }
     
     private void cargarCombos() {
 
         jComboBox2.removeAllItems();
-        jComboBox2.addItem("Masculino");
-        jComboBox2.addItem("Femenino");
+        jComboBox2.addItem("M");
+        jComboBox2.addItem("F");
         jComboBox3.removeAllItems();
         jComboBox3.addItem("Soltero");
         jComboBox3.addItem("Casado");
@@ -179,7 +183,49 @@ public class DialogAnadirPaciente extends javax.swing.JDialog {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
-        
+        try {
+            String nombre = jTextField1.getText().trim();
+            String apellido = jTextField2.getText().trim();
+            String telefono = jFormattedTextField2.getText().trim();
+            String fechaNacimiento = jFormattedTextField3.getText().trim();
+            String sexo = jComboBox2.getSelectedItem().toString();
+            String estadoCivil = jComboBox3.getSelectedItem().toString();
+            int indiceMedico = jComboBox4.getSelectedIndex();
+            
+            if (indiceMedico < 0) {
+                JOptionPane.showMessageDialog(this, "Seleccione un médico.", "Validación", JOptionPane.WARNING_MESSAGE);
+                return;
+            }
+
+            int idMedico = listaMedicos.get(indiceMedico).getIdMedico();
+
+            Paciente paciente = new Paciente(0, nombre, apellido, telefono, fechaNacimiento, sexo, estadoCivil, null, idMedico);
+
+            ValidadorPaciente validador = new ValidadorPacienteImpl();
+
+            validador.validar(paciente);
+
+            PacienteDAO pacienteDAO = new PacienteDAO();
+            
+            boolean insertado = pacienteDAO.insertar(paciente);
+
+            pacienteDAO.cerrarConexion();
+
+            if (insertado) {
+
+                JOptionPane.showMessageDialog(this, "Paciente agregado correctamente.");
+                dispose();
+            
+            } else {
+                JOptionPane.showMessageDialog(this, "No fue posible agregar el paciente.", "Error", JOptionPane.ERROR_MESSAGE);
+
+            }
+
+        } catch (Exception e) {
+
+            JOptionPane.showMessageDialog(this, e.getMessage(), "Validación", JOptionPane.WARNING_MESSAGE);
+
+        }
         
     }//GEN-LAST:event_jButton1ActionPerformed
 
