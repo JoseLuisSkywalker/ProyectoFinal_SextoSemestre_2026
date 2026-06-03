@@ -13,6 +13,8 @@ import javax.swing.table.DefaultTableModel;
 import modelo.Medico;
 import controlador.PacienteDAO;
 import modelo.Paciente;
+import controlador.CitaDAO;
+import modelo.Cita;
 
 
 public class Inicio extends javax.swing.JFrame {
@@ -44,6 +46,7 @@ public class Inicio extends javax.swing.JFrame {
         
         cargarTablaMedicos();
         cargarTablaPacientes();
+        cargarTablaCitas();
         
         setVisible(true);
         
@@ -390,9 +393,182 @@ public class Inicio extends javax.swing.JFrame {
 
     }
     
+/*
+    ===========================================≠≠≠≠≠≠≠≠≠≠≠≠≠=============================================
+    ----------------------------------- METODOS PARA MEDICOS --------------------------------------------
+    =====================================================================================================
+    */    
+    
+    private void cargarTablaCitas() {
+
+        DefaultTableModel modelo = new DefaultTableModel() {
+
+            @Override
+            public boolean isCellEditable(int row, int column) {
+                    return column == 6 || column == 7;
+
+                }
+
+            };
+
+            modelo.addColumn("No.");
+            modelo.addColumn("ID Paciente");
+            modelo.addColumn("ID Médico");
+            modelo.addColumn("Fecha");
+            modelo.addColumn("Hora");
+            modelo.addColumn("Habitación");
+            modelo.addColumn("M");
+            modelo.addColumn("E");
+
+            CitaDAO citaDAO = new CitaDAO();
+
+            List<Cita> listaCitas = citaDAO.obtenerTodos();
+
+            for (Cita cita : listaCitas) {
+
+                modelo.addRow(new Object[]{
+
+                    cita.getNumCita(),
+                    cita.getIdPaciente(),
+                    cita.getIdMedico(),
+                    cita.getFechaCita(),
+                    cita.getHoraCita(),
+                    cita.getNumHabitacion(),
+                    "M",
+                    "E"
+
+                });
+        
+            }
+
+            citaDAO.cerrarConexion();
+
+            jTable3.setModel(modelo);
+
+            configurarTablaCitas();
+
+    }
+    
+    private void buscarCitas() {
+
+        String texto = jTextField3.getText().trim();
+
+        DefaultTableModel modelo = new DefaultTableModel();
+
+        modelo.addColumn("No.");
+        modelo.addColumn("ID Paciente");
+        modelo.addColumn("ID Médico");
+        modelo.addColumn("Fecha");
+        modelo.addColumn("Hora");
+        modelo.addColumn("Habitación");
+        modelo.addColumn("M");
+        modelo.addColumn("E");
+
+        CitaDAO citaDAO = new CitaDAO();
+
+        List<Cita> lista = citaDAO.buscar(texto);
+        
+        for (Cita cita : lista) {
+
+            modelo.addRow(new Object[]{
+
+                cita.getNumCita(),
+                cita.getIdPaciente(),
+                cita.getIdMedico(),
+                cita.getFechaCita(),
+                cita.getHoraCita(),
+                cita.getNumHabitacion(),
+                "M",
+                "E"
+
+            });
+
+        }
+
+        citaDAO.cerrarConexion();
+
+        jTable3.setModel(modelo);
+
+        configurarTablaCitas();
+
+    }
+    
+    public void eliminarCita(int fila) {
+
+        int opcion = javax.swing.JOptionPane.showConfirmDialog(
+                this,
+                "¿Desea eliminar esta cita?",
+                "Confirmar eliminación",
+                javax.swing.JOptionPane.YES_NO_OPTION
+        );
+
+        if (opcion != javax.swing.JOptionPane.YES_OPTION) {
+
+            return;
+        }
+
+        int numCita = Integer.parseInt(
+                jTable3.getValueAt(fila, 0).toString()
+        );
+
+        CitaDAO dao = new CitaDAO();
+        dao.eliminar(numCita);
+        dao.cerrarConexion();
+        cargarTablaCitas();
+
+    }
+    
+    public void modificarCita(int fila) {
+
+        int numCita = Integer.parseInt(
+            jTable3.getValueAt(fila, 0).toString()
+        );
+
+        CitaDAO dao = new CitaDAO();
+
+        Cita cita = dao.buscarPorId(numCita);
+        
+        dao.cerrarConexion();
+
+        if (cita != null) {
+
+            //DialogModificarCita dialog = new DialogModificarCita(this, true, cita);
+
+            //dialog.setVisible(true);
+
+            cargarTablaCitas();
+        }
+
+    }
     
     
-    
+    private void configurarTablaCitas() {
+
+        jTable3.setRowHeight(30);
+
+        jTable3.getColumn("M").setCellRenderer(new ButtonRenderer(iconEditar, new Color(52, 152, 219)));
+
+        jTable3.getColumn("E").setCellRenderer(new ButtonRenderer(iconEliminar, new Color(231, 76, 60)));
+
+        jTable3.getColumn("M").setMaxWidth(35);
+        jTable3.getColumn("E").setMaxWidth(35);
+
+        jTable3.getColumn("M").setMinWidth(35);
+        jTable3.getColumn("E").setMinWidth(35);
+
+        jTable3.getColumn("M").setCellEditor(
+            new ButtonEditor(iconEditar, new Color(52, 152, 219), e -> {
+                int fila = jTable3.getSelectedRow();
+                modificarCita(fila);
+            }));
+
+        jTable3.getColumn("E").setCellEditor(
+            new ButtonEditor(iconEliminar, new Color(231, 76, 60), (var e) -> {
+                int fila = jTable3.getSelectedRow();
+                eliminarCita(fila);
+            }));
+
+    }
     
     
     
@@ -669,6 +845,8 @@ public class Inicio extends javax.swing.JFrame {
         CardLayout cl = (CardLayout) jPanel2.getLayout();
         cl.show(jPanel2, "citas");
         System.out.println("Switched to citas");
+        
+        cargarTablaCitas();
     }//GEN-LAST:event_jButton3ActionPerformed
 
     private void jButton7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton7ActionPerformed
@@ -697,10 +875,13 @@ public class Inicio extends javax.swing.JFrame {
         dialog.setVisible(true);
         cargarTablaPacientes();
         
+        cargarTablaCitas();
+        
     }//GEN-LAST:event_jButton10ActionPerformed
 
     private void jTextField3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField3ActionPerformed
         // TODO add your handling code here:
+        buscarCitas();
     }//GEN-LAST:event_jTextField3ActionPerformed
 
     private void jButton13ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton13ActionPerformed
@@ -709,7 +890,7 @@ public class Inicio extends javax.swing.JFrame {
         dialog.setLocationRelativeTo(this);
         dialog.setVisible(true);
         
-        
+        cargarTablaCitas();
         
     }//GEN-LAST:event_jButton13ActionPerformed
 

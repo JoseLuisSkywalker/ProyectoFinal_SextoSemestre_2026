@@ -75,7 +75,7 @@ public class DialogAnadirCita extends javax.swing.JDialog {
     }
     
     
-    
+      
     
     /**
      * This method is called from within the constructor to initialize the form.
@@ -99,6 +99,7 @@ public class DialogAnadirCita extends javax.swing.JDialog {
         jButton1 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setMinimumSize(new java.awt.Dimension(400, 320));
         getContentPane().setLayout(null);
 
         jLabel1.setText("Paciente");
@@ -245,6 +246,8 @@ public class DialogAnadirCita extends javax.swing.JDialog {
 
             );
         }
+        
+        
     }//GEN-LAST:event_jButton1ActionPerformed
 
     /**
