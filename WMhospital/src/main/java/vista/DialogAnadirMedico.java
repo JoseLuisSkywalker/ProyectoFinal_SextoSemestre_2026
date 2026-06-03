@@ -2,9 +2,11 @@ package vista;
 
 
 import controlador.MedicoDAO;
+import intefaces.ValidadorMedico;
 import javax.swing.JOptionPane;
 import javax.swing.text.MaskFormatter;
 import modelo.Medico;
+import validaciones.ValidadorMedicoImpl;
 
 /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
@@ -207,49 +209,58 @@ public class DialogAnadirMedico extends javax.swing.JDialog {
     
     private void insertarMedico() {
 
-        int idMedico = Integer.parseInt(jFormattedTextField1.getText().trim());
-
-        String nombre = jTextField1.getText().trim();
-
-        String apellido = jTextField2.getText().trim();
-
-        int numeroDepartamento = Integer.parseInt(
-            jComboBox1.getSelectedItem().toString()
-        );
-
-        String direccion = jTextField4.getText().trim();
-
-        String telefono = jFormattedTextField2.getText().trim();
-
-        Medico medico = new Medico(
-                idMedico,
-                nombre,
-                apellido,
-                numeroDepartamento,
-                direccion,
-                telefono
-        );
-
-        MedicoDAO medicoDAO = new MedicoDAO();
-
-        boolean insertado = medicoDAO.insertar(medico);
-
-        if (insertado) {
-
-            JOptionPane.showMessageDialog(
-                    this,
-                    "Médico agregado correctamente."
+        try {
+            int idMedico = Integer.parseInt(jFormattedTextField1.getText().trim());
+            
+            String nombre = jTextField1.getText().trim();
+            
+            String apellido = jTextField2.getText().trim();
+            
+            int numeroDepartamento = Integer.parseInt(
+                    jComboBox1.getSelectedItem().toString()
             );
-            System.out.print("se agrego un medico");
-
-        dispose();
-
-        } else {
-
-            JOptionPane.showMessageDialog(
-                    this,
-                    "No fue posible agregar el médico."
+            
+            String direccion = jTextField4.getText().trim();
+            
+            String telefono = jFormattedTextField2.getText().trim();
+            
+            Medico medico = new Medico(
+                    idMedico,
+                    nombre,
+                    apellido,
+                    numeroDepartamento,
+                    direccion,
+                    telefono
             );
+            
+            MedicoDAO medicoDAO = new MedicoDAO();
+            
+            ValidadorMedico validador =
+                    new ValidadorMedicoImpl();
+            
+            validador.validar(medico);
+            
+            boolean insertado = medicoDAO.insertar(medico);
+            
+            if (insertado) {
+                
+                JOptionPane.showMessageDialog(
+                        this,
+                        "Médico agregado correctamente."
+                );
+                System.out.print("se agrego un medico");
+                
+                dispose();
+                
+            } else {
+                
+                JOptionPane.showMessageDialog(
+                        this,
+                        "No fue posible agregar el médico."
+                );
+            }
+        } catch (Exception ex) {
+            JOptionPane.showMessageDialog(this, ex.getMessage(), "Validación", JOptionPane.WARNING_MESSAGE);
         }
 }
 

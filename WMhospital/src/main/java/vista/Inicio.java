@@ -651,6 +651,8 @@ public class Inicio extends javax.swing.JFrame {
         CardLayout cl = (CardLayout) jPanel2.getLayout();
         cl.show(jPanel2, "medicos");
         System.out.println("Switched to medicos");
+        
+        cargarTablaMedicos();
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
@@ -658,6 +660,8 @@ public class Inicio extends javax.swing.JFrame {
         CardLayout cl = (CardLayout) jPanel2.getLayout();
         cl.show(jPanel2, "pacientes");
         System.out.println("Switched to pacientes");
+        
+        cargarTablaPacientes();
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed

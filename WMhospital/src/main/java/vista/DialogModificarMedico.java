@@ -5,6 +5,8 @@ import controlador.MedicoDAO;
 import javax.swing.JOptionPane;
 import javax.swing.text.MaskFormatter;
 import modelo.Medico;
+import intefaces.ValidadorMedico;
+import validaciones.ValidadorMedicoImpl;
 
 /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
@@ -82,37 +84,49 @@ public class DialogModificarMedico extends javax.swing.JDialog {
     }
     
     //este método es para adquirir los campos del dialog y actualizar
-    private void actualizarMedico() {
-        
-        jLabel1.setText("Modificar Médico con ID: " + medicoOriginal.getIdMedico());
+private void actualizarMedico() {
+
+    try {
 
         int idMedico = medicoOriginal.getIdMedico();
-
         String nombre = jTextField1.getText().trim();
-
         String apellido = jTextField2.getText().trim();
-
         int numeroDepartamento = Integer.parseInt(jComboBox1.getSelectedItem().toString());
-
         String direccion = jTextField4.getText().trim();
-
         String telefono = jFormattedTextField2.getText().trim();
+        Medico medicoActualizado =
 
-        Medico medicoActualizado = new Medico(idMedico, nombre, apellido, numeroDepartamento, direccion, telefono);
+                new Medico(
+                        idMedico,
+                        nombre,
+                        apellido,
+                        numeroDepartamento,
+                        direccion,
+                        telefono
+                );
+
+        ValidadorMedico validador = new ValidadorMedicoImpl();
+
+        validador.validar(medicoActualizado);
 
         boolean actualizado = medicoDAO.actualizar(medicoActualizado);
 
         if (actualizado) {
-            JOptionPane.showMessageDialog(this, "Cambios Aceptados");
+            JOptionPane.showMessageDialog(this, "Cambios aceptados.");
+            dispose();
 
-        dispose();
+        } else {
 
-        } else { JOptionPane.showMessageDialog(this, "No fue posible actualizar el médico.");
+            JOptionPane.showMessageDialog(this, "No fue posible actualizar el médico.", "Error", JOptionPane.ERROR_MESSAGE);
+        }
+
+        } catch (Exception e) {
+
+            JOptionPane.showMessageDialog(this, e.getMessage(), "Validación", JOptionPane.WARNING_MESSAGE);
 
         }
 
     }
-    
     
 
 
