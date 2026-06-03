@@ -33,6 +33,11 @@ public class ValidadorPacienteImpl implements ValidadorPaciente {
 
             throw new Exception("El teléfono es obligatorio.");
         }
+        if (paciente.getTelefono().equals("000 - 000 - 0000")) {
+
+            throw new Exception("Ingrese un número de teléfono válido.");
+
+        }
 
         if (paciente.getFechaNacimiento() == null || paciente.getFechaNacimiento().trim().isEmpty()) {
 

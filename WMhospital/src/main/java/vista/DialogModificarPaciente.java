@@ -2,9 +2,14 @@ package vista;
 
 
 import controlador.MedicoDAO;
+import controlador.PacienteDAO;
+import intefaces.ValidadorPaciente;
+import java.util.List;
 import javax.swing.JOptionPane;
 import javax.swing.text.MaskFormatter;
 import modelo.Medico;
+import modelo.Paciente;
+import validaciones.ValidadorPacienteImpl;
 
 /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
@@ -17,31 +22,121 @@ import modelo.Medico;
  */
 public class DialogModificarPaciente extends javax.swing.JDialog {
     
+    private Paciente paciente;
+    
     private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(DialogModificarPaciente.class.getName());
 
     /**
      * Creates new form DialogAnadirMedico
      */
-    public DialogModificarPaciente(java.awt.Frame parent, boolean modal) {
+    public DialogModificarPaciente(java.awt.Frame parent, boolean modal, Paciente paciente) {
+
         super(parent, modal);
+        this.paciente = paciente;
         initComponents();
         setSize(400, 350);
         setResizable(false);
         setLocationRelativeTo(parent);
-        
-        
-        
+
         try {
+
             MaskFormatter maskTel = new MaskFormatter("### - ### - ####");
             maskTel.setPlaceholderCharacter('0');
-            jFormattedTextField2.setFormatterFactory(
-                    new javax.swing.text.DefaultFormatterFactory(maskTel)
-            );
-            
-        } catch (java.text.ParseException e){
+            jFormattedTextField2.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(maskTel));
+
+        } catch (java.text.ParseException e) {
+
             e.printStackTrace();
+
         }
-       
+        
+        try {
+
+            MaskFormatter maskFecha = new MaskFormatter("##-##-####");
+
+            maskFecha.setPlaceholderCharacter('_');
+
+            jFormattedTextField3.setFormatterFactory(
+            new javax.swing.text.DefaultFormatterFactory(maskFecha)
+            );
+
+        } catch (java.text.ParseException e) {
+
+        e.printStackTrace();
+
+}
+
+        cargarCombos();
+
+        cargarDatosPaciente();
+
+    }
+    
+    
+    private void cargarCombos() {
+
+        jComboBox2.removeAllItems();
+        jComboBox2.addItem("M");
+        jComboBox2.addItem("F");
+        jComboBox3.removeAllItems();
+        jComboBox3.addItem("Soltero");
+        jComboBox3.addItem("Casado");
+        jComboBox3.addItem("Divorciado");    
+        jComboBox3.addItem("Viudo");
+        jComboBox4.removeAllItems();
+
+        MedicoDAO medicoDAO = new MedicoDAO();
+
+        List<Medico> medicos = medicoDAO.obtenerTodos();
+
+        for (Medico medico : medicos) {
+
+            jComboBox4.addItem(
+
+                    medico.getIdMedico()       
+                    + " - "
+                    + medico.getNombre()
+                    + " "
+                    + medico.getApellido()
+            );
+
+        }
+
+    }
+    
+    private void cargarDatosPaciente() {
+
+        if (paciente == null) {
+            return;
+        }
+
+        jTextField1.setText(paciente.getNombre());
+        jTextField2.setText(paciente.getApellido());
+        
+        jFormattedTextField2.setText(paciente.getTelefono());
+
+        jFormattedTextField3.setText(paciente.getFechaNacimiento());
+
+        jComboBox2.setSelectedItem(paciente.getSexo());
+
+        jComboBox3.setSelectedItem(paciente.getEstadoCivil());
+
+        for (int i = 0; i < jComboBox4.getItemCount(); i++) {
+
+            String item = jComboBox4.getItemAt(i);
+
+            if (item.startsWith(
+                    String.valueOf(
+                            paciente.getIdMedico()
+                    )
+            )) {
+                jComboBox4.setSelectedIndex(i);
+                break;
+
+            }
+
+        }
+
     }
 
 
@@ -146,7 +241,57 @@ public class DialogModificarPaciente extends javax.swing.JDialog {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
+        String nombre = jTextField1.getText().trim();
+        String apellido = jTextField2.getText().trim();
+        String telefono = jFormattedTextField2.getText().trim();
+        String fechaNacimiento = jFormattedTextField3.getText().trim();
+        String sexo = jComboBox2.getSelectedItem().toString();
+        String estadoCivil = jComboBox3.getSelectedItem().toString();
+        String medicoSeleccionado = jComboBox4.getSelectedItem().toString();
+
+        int idMedico = Integer.parseInt(medicoSeleccionado.split(" - ")[0]);
+
+        if (nombre.isEmpty() || apellido.isEmpty() || fechaNacimiento.isEmpty()) {
+            JOptionPane.showMessageDialog(this, "Complete todos los campos.");
+            return;
+
+        }
+
+        paciente.setNombre(nombre);
+        paciente.setApellido(apellido);
+        paciente.setTelefono(telefono);
+        paciente.setFechaNacimiento(fechaNacimiento);
+        paciente.setSexo(sexo);
+        paciente.setEstadoCivil(estadoCivil);
+        paciente.setIdMedico(idMedico);
         
+        try {
+
+            ValidadorPaciente validador = new ValidadorPacienteImpl();
+
+            validador.validar(paciente);
+
+        } catch (Exception ex) {
+
+            JOptionPane.showMessageDialog(this, ex.getMessage(), "Error de validación", JOptionPane.ERROR_MESSAGE);
+            return;
+
+    }
+
+        PacienteDAO dao = new PacienteDAO();
+    
+        if (dao.actualizar(paciente)) {
+            JOptionPane.showMessageDialog(this, "Paciente modificado correctamente.");
+
+            dispose();
+
+        } else {
+
+            JOptionPane.showMessageDialog(this, "No fue posible modificar el paciente.");
+
+        }
+
+        dao.cerrarConexion();
         
     }//GEN-LAST:event_jButton1ActionPerformed
 

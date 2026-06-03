@@ -359,9 +359,9 @@ public class Inicio extends javax.swing.JFrame {
 
         if (paciente != null) {
 
-            //DialogModificarPaciente dialog = new DialogModificarPaciente(this, true, paciente);
+            DialogModificarPaciente dialog = new DialogModificarPaciente(this, true, paciente);
 
-            //dialog.setVisible(true);
+            dialog.setVisible(true);
 
             cargarTablaPacientes();
         }
