@@ -18,6 +18,7 @@ vista/DialogAnadirMedico$1.class
 vista/Inicio$2.class
 vista/DialogAnadirCita$3.class
 vista/DialogAnadirPaciente$1.class
+intefaces/ValidadorCita.class
 vista/Inicio$13.class
 validaciones/ValidadorMedicoImpl.class
 vista/ButtonRenderer.class
@@ -28,6 +29,7 @@ conexion/ConexionBD.class
 modelo/Cita.class
 vista/DialogAnadirMedico$5.class
 modelo/Medico.class
+validaciones/ValidadorCitaImpl.class
 com/mycompany/wmhospital/WMhospital.class
 vista/Inicio$15.class
 vista/DialogAnadirCita.class
