@@ -22,7 +22,7 @@ public class PacienteDAO implements InterfazPacienteDAO{
 
 
     public PacienteDAO() {
-        conexionBD = new ConexionBD();
+        conexionBD = ConexionBD.getInstance();
         conexionBD.abrirConexion();
     }
     

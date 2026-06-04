@@ -1,5 +1,6 @@
 package conexion;
 
+import funciones.FuncionCalcularEdad;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
@@ -26,6 +27,9 @@ public class ConexionBD {
             if (conexion == null || conexion.isClosed()) {
 
                 conexion = DriverManager.getConnection(URL);
+                
+                FuncionCalcularEdad.registrar(conexion);
+                
 
                 // Activar Foreign Keys
                 Statement stmt = conexion.createStatement();

@@ -1,3 +1,4 @@
+/Users/josesanchez/Computer Engineering Semesters/SextoSemestre/AdministracionBD/ProyectoFinal/WMhospital/src/main/java/Reportes/ReportePacientesPDF.java
 /Users/josesanchez/Computer Engineering Semesters/SextoSemestre/AdministracionBD/ProyectoFinal/WMhospital/src/main/java/com/mycompany/wmhospital/WMhospital.java
 /Users/josesanchez/Computer Engineering Semesters/SextoSemestre/AdministracionBD/ProyectoFinal/WMhospital/src/main/java/conexion/ConexionBD.java
 /Users/josesanchez/Computer Engineering Semesters/SextoSemestre/AdministracionBD/ProyectoFinal/WMhospital/src/main/java/conexion/ConexionBDPrueba.java
@@ -5,6 +6,7 @@
 /Users/josesanchez/Computer Engineering Semesters/SextoSemestre/AdministracionBD/ProyectoFinal/WMhospital/src/main/java/controlador/EstadisticaDAO.java
 /Users/josesanchez/Computer Engineering Semesters/SextoSemestre/AdministracionBD/ProyectoFinal/WMhospital/src/main/java/controlador/MedicoDAO.java
 /Users/josesanchez/Computer Engineering Semesters/SextoSemestre/AdministracionBD/ProyectoFinal/WMhospital/src/main/java/controlador/PacienteDAO.java
+/Users/josesanchez/Computer Engineering Semesters/SextoSemestre/AdministracionBD/ProyectoFinal/WMhospital/src/main/java/funciones/FuncionCalcularEdad.java
 /Users/josesanchez/Computer Engineering Semesters/SextoSemestre/AdministracionBD/ProyectoFinal/WMhospital/src/main/java/intefaces/InterfazCitaDAO.java
 /Users/josesanchez/Computer Engineering Semesters/SextoSemestre/AdministracionBD/ProyectoFinal/WMhospital/src/main/java/intefaces/InterfazMedicoDAO.java
 /Users/josesanchez/Computer Engineering Semesters/SextoSemestre/AdministracionBD/ProyectoFinal/WMhospital/src/main/java/intefaces/InterfazPacienteDAO.java

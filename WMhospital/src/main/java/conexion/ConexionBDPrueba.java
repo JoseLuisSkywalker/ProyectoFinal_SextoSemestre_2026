@@ -12,7 +12,7 @@ public class ConexionBDPrueba {
     
     public static void main(String[] args) {
         
-        ConexionBD con = new ConexionBD();
+        ConexionBD con = ConexionBD.getInstance();
         con.abrirConexion(); 
         
         

@@ -24,6 +24,7 @@ vista/DialogAnadirPaciente$1.class
 intefaces/ValidadorCita.class
 vista/Inicio$13.class
 validaciones/ValidadorMedicoImpl.class
+reportes/ReportePacientesPDF.class
 vista/ButtonRenderer.class
 intefaces/InterfazPacienteDAO.class
 vista/Inicio$8.class
@@ -40,6 +41,7 @@ vista/DialogModificarCita$2.class
 vista/DialogAnadirMedico$2.class
 modelo/Paciente.class
 controlador/MedicoDAO.class
+funciones/FuncionCalcularEdad.class
 vista/Inicio.class
 vista/DialogAnadirCita$1.class
 conexion/ConexionBDPrueba.class

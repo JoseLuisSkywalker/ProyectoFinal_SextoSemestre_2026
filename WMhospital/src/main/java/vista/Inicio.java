@@ -4,6 +4,8 @@
  */
 package vista;
 
+import Reportes.ReportePacientesPDF;
+import conexion.ConexionBD;
 import controlador.MedicoDAO;
 import java.awt.CardLayout;
 import java.awt.Color;
@@ -15,6 +17,7 @@ import controlador.PacienteDAO;
 import modelo.Paciente;
 import controlador.CitaDAO;
 import controlador.EstadisticaDAO;
+import java.sql.ResultSet;
 import modelo.Cita;
 import modelo.EstadisticaCita;
 
@@ -22,6 +25,8 @@ import org.jfree.chart.ChartFactory;
 import org.jfree.chart.ChartFrame;
 import org.jfree.chart.JFreeChart;
 import org.jfree.data.category.DefaultCategoryDataset;
+
+
 
 
 
@@ -50,7 +55,7 @@ public class Inicio extends javax.swing.JFrame {
         setSize(1400, 800); 
         setResizable(false); 
         setLocationRelativeTo(null);
-        
+             
         //para la tabla 
         
         cargarTablaMedicos();
@@ -1074,6 +1079,7 @@ public class Inicio extends javax.swing.JFrame {
 
     private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton6ActionPerformed
         // TODO add your handling code here:
+        ReportePacientesPDF.generarReporte();
     }//GEN-LAST:event_jButton6ActionPerformed
 
     /**
