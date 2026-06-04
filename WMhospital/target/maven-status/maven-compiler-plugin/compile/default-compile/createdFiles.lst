@@ -8,6 +8,8 @@ vista/Inicio$10.class
 vista/Inicio$1.class
 vista/DialogModificarCita.class
 controlador/PacienteDAO.class
+controlador/EstadisticaDAO.class
+modelo/EstadisticaCita.class
 vista/DialogAnadirMedico$4.class
 vista/DialogAnadirMedico.class
 vista/Inicio$17.class
@@ -56,6 +58,7 @@ intefaces/InterfazMedicoDAO.class
 vista/DialogAnadirMedico$3.class
 vista/DialogAnadirCita$2.class
 vista/DialogModificarPaciente.class
+vista/Inicio$18.class
 vista/DialogModificarCita$1.class
 vista/DialogModificarMedico.class
 vista/Inicio$3.class

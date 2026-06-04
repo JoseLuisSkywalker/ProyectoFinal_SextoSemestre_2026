@@ -14,7 +14,15 @@ import modelo.Medico;
 import controlador.PacienteDAO;
 import modelo.Paciente;
 import controlador.CitaDAO;
+import controlador.EstadisticaDAO;
 import modelo.Cita;
+import modelo.EstadisticaCita;
+
+import org.jfree.chart.ChartFactory;
+import org.jfree.chart.ChartFrame;
+import org.jfree.chart.JFreeChart;
+import org.jfree.data.category.DefaultCategoryDataset;
+
 
 
 public class Inicio extends javax.swing.JFrame {
@@ -572,6 +580,54 @@ public class Inicio extends javax.swing.JFrame {
     }
     
     
+    /*
+    ================================================================================================================
+    ------------------------------------------ METODOS PARA GRAFICAS DASHBOARD -------------------------------------
+    ================================================================================================================
+    */
+    private void mostrarGrafica() {
+
+        EstadisticaDAO dao = new EstadisticaDAO();
+
+        List<EstadisticaCita> lista =
+                dao.obtenerCitasPorMes();
+
+        DefaultCategoryDataset dataset =
+            new DefaultCategoryDataset();
+
+        for (EstadisticaCita e : lista) {
+
+            String etiqueta =
+                    e.getMes() + "/" + e.getAnio();
+
+            dataset.addValue(
+                e.getTotalCitas(),
+                    "Citas",
+                    etiqueta
+            );
+        }
+
+        JFreeChart chart =
+                ChartFactory.createBarChart(
+                        "Cantidad de Citas por Mes",
+                        "Mes",
+                        "Número de Citas",
+                        dataset
+                );
+
+        ChartFrame frame =
+                new ChartFrame(
+                        "Estadísticas de Citas",
+                        chart
+                );
+
+        frame.pack();
+        frame.setLocationRelativeTo(null);
+        frame.setVisible(true);
+    }
+    
+    
+    
     
     
     @SuppressWarnings("unchecked")
@@ -714,6 +770,11 @@ public class Inicio extends javax.swing.JFrame {
         jButton6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/iconos/Report.png"))); // NOI18N
         jButton6.setToolTipText("Generar Reporte");
         jButton6.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(35, 71, 89), 25));
+        jButton6.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton6ActionPerformed(evt);
+            }
+        });
         jPanel7.add(jButton6);
         jButton6.setBounds(480, 20, 440, 290);
 
@@ -1002,11 +1063,18 @@ public class Inicio extends javax.swing.JFrame {
 
     private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
         // TODO add your handling code here:
+        //botton para la gráfica
+        mostrarGrafica();
+        
     }//GEN-LAST:event_jButton5ActionPerformed
 
     private void jButton8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton8ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jButton8ActionPerformed
+
+    private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton6ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButton6ActionPerformed
 
     /**
      * @param args the command line arguments
