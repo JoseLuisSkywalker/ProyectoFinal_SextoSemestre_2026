@@ -23,7 +23,7 @@ public class MedicoDAO implements InterfazMedicoDAO {
 
     public MedicoDAO() {
 
-        conexionBD = new ConexionBD();
+        conexionBD = ConexionBD.getInstance();
 
         conexionBD.abrirConexion();
 

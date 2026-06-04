@@ -11,9 +11,29 @@ import java.sql.Statement;
 public class ConexionBD {
 
     private Connection conexion;
+    
+    private static ConexionBD instancia;
 
     // Archivo SQLite
     private final String URL = "jdbc:sqlite:wellmeadows_hospital.db";
+    
+    
+    //------------------------- PATRON DE DISENO SINGELTON -------------
+    private ConexionBD() {
+
+    }
+    
+    public static ConexionBD getInstance() {
+
+        if (instancia == null) {
+
+            instancia = new ConexionBD();
+
+        }
+
+    return instancia;
+
+    }
 
     // Método para abrir la conexión
     public Connection abrirConexion() {

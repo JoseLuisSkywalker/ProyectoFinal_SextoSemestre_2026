@@ -651,6 +651,7 @@ public class Inicio extends javax.swing.JFrame {
         jButton5 = new javax.swing.JButton();
         jButton6 = new javax.swing.JButton();
         jButton8 = new javax.swing.JButton();
+        jButton9 = new javax.swing.JButton();
         jLabel5 = new javax.swing.JLabel();
         jPanel3 = new javax.swing.JPanel();
         jTextField1 = new javax.swing.JTextField();
@@ -793,7 +794,18 @@ public class Inicio extends javax.swing.JFrame {
             }
         });
         jPanel7.add(jButton8);
-        jButton8.setBounds(20, 330, 900, 290);
+        jButton8.setBounds(20, 330, 660, 290);
+
+        jButton9.setBackground(new java.awt.Color(91, 123, 140));
+        jButton9.setIcon(new javax.swing.ImageIcon(getClass().getResource("/iconos/Calendario.png"))); // NOI18N
+        jButton9.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(35, 71, 89), 25));
+        jButton9.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton9ActionPerformed(evt);
+            }
+        });
+        jPanel7.add(jButton9);
+        jButton9.setBounds(700, 330, 220, 290);
 
         jPanel4.add(jPanel7);
         jPanel7.setBounds(80, 80, 940, 640);
@@ -1074,13 +1086,28 @@ public class Inicio extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton5ActionPerformed
 
     private void jButton8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton8ActionPerformed
-        // TODO add your handling code here:
+        // TODO add your handling code here
+        //este es el boton para el view con joins y con uso de indices!!!!
+
+        DialogVistaCitas dialog = new DialogVistaCitas(this, true);
+        dialog.setLocationRelativeTo(this);
+        dialog.setVisible(true);
+        
     }//GEN-LAST:event_jButton8ActionPerformed
 
     private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton6ActionPerformed
         // TODO add your handling code here:
         ReportePacientesPDF.generarReporte();
     }//GEN-LAST:event_jButton6ActionPerformed
+
+    private void jButton9ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton9ActionPerformed
+        // TODO add your handling code here:
+        DialogVistaParticion dialog = new DialogVistaParticion(this, true);
+        dialog.setLocationRelativeTo(this);
+        dialog.setVisible(rootPaneCheckingEnabled);
+        
+        
+    }//GEN-LAST:event_jButton9ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -1098,6 +1125,7 @@ public class Inicio extends javax.swing.JFrame {
     private javax.swing.JButton jButton6;
     private javax.swing.JButton jButton7;
     private javax.swing.JButton jButton8;
+    private javax.swing.JButton jButton9;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;

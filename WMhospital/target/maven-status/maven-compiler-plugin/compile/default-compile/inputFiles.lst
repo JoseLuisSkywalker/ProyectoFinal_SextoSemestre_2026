@@ -6,6 +6,8 @@
 /Users/josesanchez/Computer Engineering Semesters/SextoSemestre/AdministracionBD/ProyectoFinal/WMhospital/src/main/java/controlador/EstadisticaDAO.java
 /Users/josesanchez/Computer Engineering Semesters/SextoSemestre/AdministracionBD/ProyectoFinal/WMhospital/src/main/java/controlador/MedicoDAO.java
 /Users/josesanchez/Computer Engineering Semesters/SextoSemestre/AdministracionBD/ProyectoFinal/WMhospital/src/main/java/controlador/PacienteDAO.java
+/Users/josesanchez/Computer Engineering Semesters/SextoSemestre/AdministracionBD/ProyectoFinal/WMhospital/src/main/java/controlador/VistaCitaDAO.java
+/Users/josesanchez/Computer Engineering Semesters/SextoSemestre/AdministracionBD/ProyectoFinal/WMhospital/src/main/java/controlador/VistaParticionDAO.java
 /Users/josesanchez/Computer Engineering Semesters/SextoSemestre/AdministracionBD/ProyectoFinal/WMhospital/src/main/java/funciones/FuncionCalcularEdad.java
 /Users/josesanchez/Computer Engineering Semesters/SextoSemestre/AdministracionBD/ProyectoFinal/WMhospital/src/main/java/intefaces/InterfazCitaDAO.java
 /Users/josesanchez/Computer Engineering Semesters/SextoSemestre/AdministracionBD/ProyectoFinal/WMhospital/src/main/java/intefaces/InterfazMedicoDAO.java
@@ -18,6 +20,8 @@
 /Users/josesanchez/Computer Engineering Semesters/SextoSemestre/AdministracionBD/ProyectoFinal/WMhospital/src/main/java/modelo/Medico.java
 /Users/josesanchez/Computer Engineering Semesters/SextoSemestre/AdministracionBD/ProyectoFinal/WMhospital/src/main/java/modelo/Paciente.java
 /Users/josesanchez/Computer Engineering Semesters/SextoSemestre/AdministracionBD/ProyectoFinal/WMhospital/src/main/java/modelo/ResultSetTableModel.java
+/Users/josesanchez/Computer Engineering Semesters/SextoSemestre/AdministracionBD/ProyectoFinal/WMhospital/src/main/java/modelo/VistaCita.java
+/Users/josesanchez/Computer Engineering Semesters/SextoSemestre/AdministracionBD/ProyectoFinal/WMhospital/src/main/java/modelo/VistaParticion.java
 /Users/josesanchez/Computer Engineering Semesters/SextoSemestre/AdministracionBD/ProyectoFinal/WMhospital/src/main/java/validaciones/ValidadorCitaImpl.java
 /Users/josesanchez/Computer Engineering Semesters/SextoSemestre/AdministracionBD/ProyectoFinal/WMhospital/src/main/java/validaciones/ValidadorMedicoImpl.java
 /Users/josesanchez/Computer Engineering Semesters/SextoSemestre/AdministracionBD/ProyectoFinal/WMhospital/src/main/java/validaciones/ValidadorPacienteImpl.java
@@ -29,4 +33,6 @@
 /Users/josesanchez/Computer Engineering Semesters/SextoSemestre/AdministracionBD/ProyectoFinal/WMhospital/src/main/java/vista/DialogModificarCita.java
 /Users/josesanchez/Computer Engineering Semesters/SextoSemestre/AdministracionBD/ProyectoFinal/WMhospital/src/main/java/vista/DialogModificarMedico.java
 /Users/josesanchez/Computer Engineering Semesters/SextoSemestre/AdministracionBD/ProyectoFinal/WMhospital/src/main/java/vista/DialogModificarPaciente.java
+/Users/josesanchez/Computer Engineering Semesters/SextoSemestre/AdministracionBD/ProyectoFinal/WMhospital/src/main/java/vista/DialogVistaCitas.java
+/Users/josesanchez/Computer Engineering Semesters/SextoSemestre/AdministracionBD/ProyectoFinal/WMhospital/src/main/java/vista/DialogVistaParticion.java
 /Users/josesanchez/Computer Engineering Semesters/SextoSemestre/AdministracionBD/ProyectoFinal/WMhospital/src/main/java/vista/Inicio.java

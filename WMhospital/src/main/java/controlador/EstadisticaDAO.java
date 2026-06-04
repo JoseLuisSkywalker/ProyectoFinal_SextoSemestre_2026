@@ -16,7 +16,7 @@ public class EstadisticaDAO {
 
     public EstadisticaDAO() {
 
-        conexionBD = new ConexionBD();
+        conexionBD = ConexionBD.getInstance();
 
     }
 

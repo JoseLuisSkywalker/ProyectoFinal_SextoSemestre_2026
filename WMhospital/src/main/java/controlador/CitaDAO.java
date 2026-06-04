@@ -18,7 +18,7 @@ public class CitaDAO implements InterfazCitaDAO {
 
     public CitaDAO() {
 
-        conexionBD = new ConexionBD();
+        conexionBD = ConexionBD.getInstance();
 
         conexionBD.abrirConexion();
 
