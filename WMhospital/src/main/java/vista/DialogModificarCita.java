@@ -6,11 +6,13 @@ package vista;
 
 import controlador.CitaDAO;
 import controlador.PacienteDAO;
+import intefaces.ValidadorCita;
 import java.util.List;
 import javax.swing.JOptionPane;
 import javax.swing.text.MaskFormatter;
 import modelo.Cita;
 import modelo.Paciente;
+import validaciones.ValidadorCitaImpl;
 
 /**
  *
@@ -30,17 +32,12 @@ public class DialogModificarCita extends javax.swing.JDialog {
     public DialogModificarCita(java.awt.Frame parent, boolean modal, Cita cita) {
 
         super(parent, modal);
-
         initComponents();
-
         this.cita = cita;
-
         setSize(400, 320);
-
+        setTitle("Modificar Cita");
         setResizable(false);
-
         setLocationRelativeTo(parent);
-
         cargarPacientes();
 
         try {
@@ -246,6 +243,9 @@ public class DialogModificarCita extends javax.swing.JDialog {
             cita.setHoraCita(horaCita);
 
             cita.setNumHabitacion(Integer.parseInt( jComboBox5.getSelectedItem().toString()));
+            
+            ValidadorCita validador = new ValidadorCitaImpl();
+            validador.validar(cita);
 
             CitaDAO citaDAO = new CitaDAO();
 

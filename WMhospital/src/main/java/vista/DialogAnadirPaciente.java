@@ -32,6 +32,7 @@ public class DialogAnadirPaciente extends javax.swing.JDialog {
         super(parent, modal);
         initComponents();
         setSize(400, 350);
+        setTitle("Añadir Paciente");
         setResizable(false);
         setLocationRelativeTo(parent);
         cargarCombos();

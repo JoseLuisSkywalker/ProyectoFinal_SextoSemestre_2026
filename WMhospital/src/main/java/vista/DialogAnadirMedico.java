@@ -28,6 +28,7 @@ public class DialogAnadirMedico extends javax.swing.JDialog {
         super(parent, modal);
         initComponents();
         setSize(400, 350);
+        setTitle("Añadir Medico");
         setResizable(false);
         setLocationRelativeTo(parent);
         

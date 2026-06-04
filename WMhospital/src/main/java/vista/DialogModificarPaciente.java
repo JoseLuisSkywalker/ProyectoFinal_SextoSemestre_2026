@@ -35,6 +35,7 @@ public class DialogModificarPaciente extends javax.swing.JDialog {
         this.paciente = paciente;
         initComponents();
         setSize(400, 350);
+        setTitle("Modificar Paciente");
         setResizable(false);
         setLocationRelativeTo(parent);
 

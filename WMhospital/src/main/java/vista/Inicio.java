@@ -24,9 +24,10 @@ public class Inicio extends javax.swing.JFrame {
     //iconos instanciados
     private ImageIcon iconEditar; 
     private ImageIcon iconEliminar; 
-  
+    
     public Inicio() {
         initComponents();
+        setTitle("Wellmeadows Hospital"); 
         
         //cambios estéticos
         iconEditar = new ImageIcon(getClass().getResource("/iconos/editar.png"));
@@ -585,6 +586,11 @@ public class Inicio extends javax.swing.JFrame {
         jLabel4 = new javax.swing.JLabel();
         jPanel2 = new javax.swing.JPanel();
         jPanel4 = new javax.swing.JPanel();
+        jPanel7 = new javax.swing.JPanel();
+        jButton5 = new javax.swing.JButton();
+        jButton6 = new javax.swing.JButton();
+        jButton8 = new javax.swing.JButton();
+        jLabel5 = new javax.swing.JLabel();
         jPanel3 = new javax.swing.JPanel();
         jTextField1 = new javax.swing.JTextField();
         jButton7 = new javax.swing.JButton();
@@ -688,14 +694,59 @@ public class Inicio extends javax.swing.JFrame {
         jPanel4.setBackground(new java.awt.Color(20, 40, 51));
         jPanel4.setToolTipText("");
         jPanel4.setLayout(null);
+
+        jPanel7.setBackground(new java.awt.Color(6, 27, 36));
+        jPanel7.setLayout(null);
+
+        jButton5.setBackground(new java.awt.Color(91, 123, 140));
+        jButton5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/iconos/Grafica.png"))); // NOI18N
+        jButton5.setToolTipText("Generar Gráfica");
+        jButton5.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(35, 71, 89), 25));
+        jButton5.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton5ActionPerformed(evt);
+            }
+        });
+        jPanel7.add(jButton5);
+        jButton5.setBounds(20, 20, 440, 290);
+
+        jButton6.setBackground(new java.awt.Color(91, 123, 140));
+        jButton6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/iconos/Report.png"))); // NOI18N
+        jButton6.setToolTipText("Generar Reporte");
+        jButton6.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(35, 71, 89), 25));
+        jPanel7.add(jButton6);
+        jButton6.setBounds(480, 20, 440, 290);
+
+        jButton8.setBackground(new java.awt.Color(91, 123, 140));
+        jButton8.setIcon(new javax.swing.ImageIcon(getClass().getResource("/iconos/ConsultaRapida.png"))); // NOI18N
+        jButton8.setToolTipText("Busqueda Con Índices");
+        jButton8.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(35, 71, 89), 25));
+        jButton8.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton8ActionPerformed(evt);
+            }
+        });
+        jPanel7.add(jButton8);
+        jButton8.setBounds(20, 330, 900, 290);
+
+        jPanel4.add(jPanel7);
+        jPanel7.setBounds(80, 80, 940, 640);
+
+        jLabel5.setFont(new java.awt.Font(".AppleSystemUIFont", 1, 24)); // NOI18N
+        jLabel5.setText("Dashboard");
+        jPanel4.add(jLabel5);
+        jLabel5.setBounds(470, 20, 141, 40);
+
         jPanel2.add(jPanel4, "inicio");
 
         jPanel3.setBackground(new java.awt.Color(20, 40, 51));
         jPanel3.setToolTipText("");
         jPanel3.setLayout(null);
 
+        jTextField1.setBackground(new java.awt.Color(10, 20, 25));
         jTextField1.setFont(new java.awt.Font("Helvetica Neue", 0, 18)); // NOI18N
         jTextField1.setToolTipText("");
+        jTextField1.setBorder(null);
         jTextField1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jTextField1ActionPerformed(evt);
@@ -709,9 +760,11 @@ public class Inicio extends javax.swing.JFrame {
         jPanel3.add(jTextField1);
         jTextField1.setBounds(40, 80, 930, 50);
 
+        jButton7.setBackground(new java.awt.Color(10, 20, 25));
         jButton7.setFont(new java.awt.Font("Helvetica Neue", 0, 24)); // NOI18N
         jButton7.setText("+");
         jButton7.setAutoscrolls(true);
+        jButton7.setBorder(null);
         jButton7.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton7ActionPerformed(evt);
@@ -720,12 +773,13 @@ public class Inicio extends javax.swing.JFrame {
         jPanel3.add(jButton7);
         jButton7.setBounds(990, 80, 70, 50);
 
-        jLabel1.setFont(new java.awt.Font("Helvetica Neue", 0, 24)); // NOI18N
+        jLabel1.setFont(new java.awt.Font(".AppleSystemUIFont", 1, 24)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(255, 255, 255));
         jLabel1.setText("Médicos");
         jPanel3.add(jLabel1);
-        jLabel1.setBounds(40, 30, 140, 30);
+        jLabel1.setBounds(480, 20, 110, 40);
 
+        jTable1.setBackground(new java.awt.Color(10, 20, 25));
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
@@ -748,6 +802,8 @@ public class Inicio extends javax.swing.JFrame {
         jPanel5.setToolTipText("Buscar Pacientes");
         jPanel5.setLayout(null);
 
+        jTextField2.setBackground(new java.awt.Color(10, 20, 25));
+        jTextField2.setBorder(null);
         jTextField2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jTextField2ActionPerformed(evt);
@@ -761,8 +817,10 @@ public class Inicio extends javax.swing.JFrame {
         jPanel5.add(jTextField2);
         jTextField2.setBounds(40, 80, 930, 50);
 
+        jButton10.setBackground(new java.awt.Color(10, 20, 25));
         jButton10.setFont(new java.awt.Font("Helvetica Neue", 0, 24)); // NOI18N
         jButton10.setText("+");
+        jButton10.setBorder(null);
         jButton10.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton10ActionPerformed(evt);
@@ -771,12 +829,13 @@ public class Inicio extends javax.swing.JFrame {
         jPanel5.add(jButton10);
         jButton10.setBounds(990, 80, 70, 50);
 
-        jLabel2.setFont(new java.awt.Font("Helvetica Neue", 0, 24)); // NOI18N
+        jLabel2.setFont(new java.awt.Font(".AppleSystemUIFont", 1, 24)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(255, 255, 255));
         jLabel2.setText("Pacientes");
         jPanel5.add(jLabel2);
-        jLabel2.setBounds(40, 30, 140, 30);
+        jLabel2.setBounds(470, 20, 130, 40);
 
+        jTable2.setBackground(new java.awt.Color(10, 20, 25));
         jTable2.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
@@ -799,6 +858,8 @@ public class Inicio extends javax.swing.JFrame {
         jPanel6.setToolTipText("Buscar Citas");
         jPanel6.setLayout(null);
 
+        jTextField3.setBackground(new java.awt.Color(10, 20, 25));
+        jTextField3.setBorder(null);
         jTextField3.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jTextField3ActionPerformed(evt);
@@ -807,8 +868,10 @@ public class Inicio extends javax.swing.JFrame {
         jPanel6.add(jTextField3);
         jTextField3.setBounds(40, 80, 930, 50);
 
+        jButton13.setBackground(new java.awt.Color(10, 20, 25));
         jButton13.setFont(new java.awt.Font("Helvetica Neue", 0, 24)); // NOI18N
         jButton13.setText("+");
+        jButton13.setBorder(null);
         jButton13.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton13ActionPerformed(evt);
@@ -817,12 +880,13 @@ public class Inicio extends javax.swing.JFrame {
         jPanel6.add(jButton13);
         jButton13.setBounds(990, 80, 70, 50);
 
-        jLabel3.setFont(new java.awt.Font("Helvetica Neue", 0, 24)); // NOI18N
+        jLabel3.setFont(new java.awt.Font(".AppleSystemUIFont", 1, 24)); // NOI18N
         jLabel3.setForeground(new java.awt.Color(255, 255, 255));
         jLabel3.setText("Citas");
         jPanel6.add(jLabel3);
-        jLabel3.setBounds(40, 30, 140, 30);
+        jLabel3.setBounds(500, 20, 70, 40);
 
+        jTable3.setBackground(new java.awt.Color(10, 20, 25));
         jTable3.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
@@ -936,6 +1000,14 @@ public class Inicio extends javax.swing.JFrame {
         buscarPacientes();
     }//GEN-LAST:event_jTextField2KeyReleased
 
+    private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButton5ActionPerformed
+
+    private void jButton8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton8ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButton8ActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -948,17 +1020,22 @@ public class Inicio extends javax.swing.JFrame {
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton4;
+    private javax.swing.JButton jButton5;
+    private javax.swing.JButton jButton6;
     private javax.swing.JButton jButton7;
+    private javax.swing.JButton jButton8;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
     private javax.swing.JPanel jPanel5;
     private javax.swing.JPanel jPanel6;
+    private javax.swing.JPanel jPanel7;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;

@@ -33,6 +33,7 @@ public class DialogModificarMedico extends javax.swing.JDialog {
         super(parent, modal);
         initComponents();
         setSize(400, 350);
+        setTitle("Modificar Médico");
         setResizable(false);
         setLocationRelativeTo(parent);
         
