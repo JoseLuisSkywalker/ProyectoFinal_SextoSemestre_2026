@@ -14,7 +14,7 @@ public class ConexionBD {
     
     private static ConexionBD instancia;
 
-    // Archivo SQLite
+    
     private final String URL = "jdbc:sqlite:wellmeadows_hospital.db";
     
     
@@ -35,15 +35,13 @@ public class ConexionBD {
 
     }
 
-    // Método para abrir la conexión
+    
     public Connection abrirConexion() {
 
         try {
-
-            // Driver JDBC SQLite
             Class.forName("org.sqlite.JDBC");
 
-            // Evitar abrir conexiones duplicadas
+            
             if (conexion == null || conexion.isClosed()) {
 
                 conexion = DriverManager.getConnection(URL);
@@ -78,7 +76,7 @@ public class ConexionBD {
         return conexion;
     }
 
-    // Método para cerrar la conexión
+    
     public void cerrarConexion() {
 
         if (conexion != null) {
@@ -98,33 +96,69 @@ public class ConexionBD {
         }
     }
 
-    // Ejecutar INSERT, UPDATE y DELETE
+    
+//-----------------------------------------–––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––    
+//-----------------------------------------–––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––
+//----------------------------------------- TRANSACCION EN EL LMD  –––––––––––––––––––––––––––––––––––––––––
+//-----------------------------------------–––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––
+//-----------------------------------------–––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––
+//-----------------------------------------–––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––    
+
+    
     public boolean ejecutarInstruccionLMD(String sql, Object... datos) {
 
         try {
 
             if (conexion == null || conexion.isClosed()) {
+
                 abrirConexion();
             }
 
-                try (PreparedStatement pstmt = conexion.prepareStatement(sql)) {
+            conexion.setAutoCommit(false);
+
+            try (PreparedStatement pstmt = conexion.prepareStatement(sql)) {
 
                 for (int i = 0; i < datos.length; i++) {
+
                     pstmt.setObject(i + 1, datos[i]);
                 }
 
-                return pstmt.executeUpdate() >= 1;
+                int filasAfectadas = pstmt.executeUpdate();
+                
+                conexion.commit();
+
+                return filasAfectadas > 0;
+
+            } catch (SQLException e) {
+
+                conexion.rollback();
+                System.out.println(
+
+                        "La Transacción fue cancelada, se hará un ROLLBACK!!!"
+
+                );
+
+                e.printStackTrace();
+
+                return false;
+
+            } finally {
+
+                conexion.setAutoCommit(true);
+
             }
 
         } catch (SQLException e) {
 
-            System.out.println("Error al ejecutar la instrucción LMD");
             e.printStackTrace();
+
             return false;
+
         }
+
     }
 
-    // Ejecutar SELECT
+    
     public ResultSet ejecutarConsultaSQL(String sql, Object... datos) {
 
         try {

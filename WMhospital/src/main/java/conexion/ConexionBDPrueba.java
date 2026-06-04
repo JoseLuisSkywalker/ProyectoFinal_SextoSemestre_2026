@@ -4,6 +4,8 @@
  */
 package conexion;
 
+import Seguridad.Seguridad;
+
 /**
  *
  * @author josesanchez
@@ -13,8 +15,9 @@ public class ConexionBDPrueba {
     public static void main(String[] args) {
         
         ConexionBD con = ConexionBD.getInstance();
-        con.abrirConexion(); 
+        con.abrirConexion();
         
+    
         
     }
 }

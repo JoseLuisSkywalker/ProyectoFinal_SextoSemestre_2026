@@ -1,4 +1,5 @@
 /Users/josesanchez/Computer Engineering Semesters/SextoSemestre/AdministracionBD/ProyectoFinal/WMhospital/src/main/java/Reportes/ReportePacientesPDF.java
+/Users/josesanchez/Computer Engineering Semesters/SextoSemestre/AdministracionBD/ProyectoFinal/WMhospital/src/main/java/Seguridad/Seguridad.java
 /Users/josesanchez/Computer Engineering Semesters/SextoSemestre/AdministracionBD/ProyectoFinal/WMhospital/src/main/java/com/mycompany/wmhospital/WMhospital.java
 /Users/josesanchez/Computer Engineering Semesters/SextoSemestre/AdministracionBD/ProyectoFinal/WMhospital/src/main/java/conexion/ConexionBD.java
 /Users/josesanchez/Computer Engineering Semesters/SextoSemestre/AdministracionBD/ProyectoFinal/WMhospital/src/main/java/conexion/ConexionBDPrueba.java
@@ -36,3 +37,5 @@
 /Users/josesanchez/Computer Engineering Semesters/SextoSemestre/AdministracionBD/ProyectoFinal/WMhospital/src/main/java/vista/DialogVistaCitas.java
 /Users/josesanchez/Computer Engineering Semesters/SextoSemestre/AdministracionBD/ProyectoFinal/WMhospital/src/main/java/vista/DialogVistaParticion.java
 /Users/josesanchez/Computer Engineering Semesters/SextoSemestre/AdministracionBD/ProyectoFinal/WMhospital/src/main/java/vista/Inicio.java
+/Users/josesanchez/Computer Engineering Semesters/SextoSemestre/AdministracionBD/ProyectoFinal/WMhospital/src/main/java/vista/Inicio2.java
+/Users/josesanchez/Computer Engineering Semesters/SextoSemestre/AdministracionBD/ProyectoFinal/WMhospital/src/main/java/vista/VentanaLogin.java

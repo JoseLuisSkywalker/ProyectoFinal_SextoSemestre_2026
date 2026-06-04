@@ -30,18 +30,17 @@ import org.jfree.data.category.DefaultCategoryDataset;
 
 
 
-public class Inicio extends javax.swing.JFrame {
+public class Inicio2 extends javax.swing.JFrame {
     
-    private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(Inicio.class.getName());
+    private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(Inicio2.class.getName());
     
     //iconos instanciados
     private ImageIcon iconEditar; 
     private ImageIcon iconEliminar; 
     
-    public Inicio() {
+    public Inicio2() {
         initComponents();
         setTitle("Wellmeadows Hospital"); 
-        
         
         //cambios estéticos
         iconEditar = new ImageIcon(getClass().getResource("/iconos/editar.png"));
@@ -641,9 +640,6 @@ public class Inicio extends javax.swing.JFrame {
     private void initComponents() {
 
         jPanel1 = new javax.swing.JPanel();
-        jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
-        jButton3 = new javax.swing.JButton();
         jButton4 = new javax.swing.JButton();
         jLabel4 = new javax.swing.JLabel();
         jPanel2 = new javax.swing.JPanel();
@@ -683,49 +679,6 @@ public class Inicio extends javax.swing.JFrame {
         jPanel1.setBackground(new java.awt.Color(35, 71, 89));
         jPanel1.setPreferredSize(new java.awt.Dimension(300, 800));
         jPanel1.setLayout(null);
-
-        jButton1.setBackground(new java.awt.Color(91, 123, 140));
-        jButton1.setFont(new java.awt.Font(".AppleSystemUIFont", 1, 36)); // NOI18N
-        jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/iconos/Medico.png"))); // NOI18N
-        jButton1.setText("   Medicos");
-        jButton1.setBorder(null);
-        jButton1.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
-            }
-        });
-        jPanel1.add(jButton1);
-        jButton1.setBounds(0, 390, 300, 60);
-
-        jButton2.setBackground(new java.awt.Color(91, 123, 140));
-        jButton2.setFont(new java.awt.Font(".AppleSystemUIFont", 1, 36)); // NOI18N
-        jButton2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/iconos/Paciente.png"))); // NOI18N
-        jButton2.setText("   Pacientes");
-        jButton2.setToolTipText("");
-        jButton2.setBorder(null);
-        jButton2.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        jButton2.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton2ActionPerformed(evt);
-            }
-        });
-        jPanel1.add(jButton2);
-        jButton2.setBounds(0, 470, 300, 60);
-
-        jButton3.setBackground(new java.awt.Color(91, 123, 140));
-        jButton3.setFont(new java.awt.Font(".AppleSystemUIFont", 1, 36)); // NOI18N
-        jButton3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/iconos/Cita.png"))); // NOI18N
-        jButton3.setText("   Citas");
-        jButton3.setBorder(null);
-        jButton3.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        jButton3.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton3ActionPerformed(evt);
-            }
-        });
-        jPanel1.add(jButton3);
-        jButton3.setBounds(0, 550, 300, 60);
 
         jButton4.setBackground(new java.awt.Color(91, 123, 140));
         jButton4.setFont(new java.awt.Font(".AppleSystemUIFont", 1, 36)); // NOI18N
@@ -944,11 +897,6 @@ public class Inicio extends javax.swing.JFrame {
                 jTextField3ActionPerformed(evt);
             }
         });
-        jTextField3.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyReleased(java.awt.event.KeyEvent evt) {
-                jTextField3KeyReleased(evt);
-            }
-        });
         jPanel6.add(jTextField3);
         jTextField3.setBounds(40, 80, 930, 50);
 
@@ -994,33 +942,6 @@ public class Inicio extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        // TODO add your handling code here:
-        CardLayout cl = (CardLayout) jPanel2.getLayout();
-        cl.show(jPanel2, "medicos");
-        System.out.println("Switched to medicos");
-        
-        cargarTablaMedicos();
-    }//GEN-LAST:event_jButton1ActionPerformed
-
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        // TODO add your handling code here:
-        CardLayout cl = (CardLayout) jPanel2.getLayout();
-        cl.show(jPanel2, "pacientes");
-        System.out.println("Switched to pacientes");
-        
-        cargarTablaPacientes();
-    }//GEN-LAST:event_jButton2ActionPerformed
-
-    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
-        // TODO add your handling code here:
-        CardLayout cl = (CardLayout) jPanel2.getLayout();
-        cl.show(jPanel2, "citas");
-        System.out.println("Switched to citas");
-        
-        cargarTablaCitas();
-    }//GEN-LAST:event_jButton3ActionPerformed
 
     private void jButton7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton7ActionPerformed
         // TODO add your handling code here:
@@ -1115,22 +1036,14 @@ public class Inicio extends javax.swing.JFrame {
         
     }//GEN-LAST:event_jButton9ActionPerformed
 
-    private void jTextField3KeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextField3KeyReleased
-        // TODO add your handling code here:
-        buscarCitas();
-    }//GEN-LAST:event_jTextField3KeyReleased
-
     /**
      * @param args the command line arguments
      */
     
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton10;
     private javax.swing.JButton jButton13;
-    private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton4;
     private javax.swing.JButton jButton5;
     private javax.swing.JButton jButton6;

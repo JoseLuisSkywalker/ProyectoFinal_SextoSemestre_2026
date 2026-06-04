@@ -9,6 +9,7 @@ import javax.swing.JFrame;
 import javax.swing.SwingUtilities;
 import javax.swing.UIManager;
 import vista.Inicio;
+import vista.VentanaLogin;
 
 public class WMhospital {
 
@@ -18,7 +19,7 @@ public class WMhospital {
 
         java.awt.EventQueue.invokeLater(() -> {
 
-            new Inicio().setVisible(true);
+            new VentanaLogin().setVisible(true);
 
         });
 
