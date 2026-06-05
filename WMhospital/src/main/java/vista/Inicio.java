@@ -160,7 +160,7 @@ public class Inicio extends javax.swing.JFrame {
     
     // para eliminar el médico utilizando id_medico
     public void eliminarMedico(int fila) {
-        int opcion = javax.swing.JOptionPane.showConfirmDialog(this, "¿Desea eliminar este médico?", "Confirmar eliminación", javax.swing.JOptionPane.YES_NO_OPTION);
+        int opcion = javax.swing.JOptionPane.showConfirmDialog(this, "¿Desea eliminar este médico?, Haciendo esto elmina a sus pacientes y sus citas asignadas en cascada", "Confirmar eliminación", javax.swing.JOptionPane.YES_NO_OPTION);
 
         if (opcion != javax.swing.JOptionPane.YES_OPTION) {
             return;
