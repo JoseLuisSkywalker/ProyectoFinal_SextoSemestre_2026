@@ -115,8 +115,20 @@ public class DialogAnadirPaciente extends javax.swing.JDialog {
         jLabel2.setText("Nombre");
         getContentPane().add(jLabel2);
         jLabel2.setBounds(20, 40, 60, 17);
+
+        jTextField1.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                jTextField1KeyTyped(evt);
+            }
+        });
         getContentPane().add(jTextField1);
         jTextField1.setBounds(100, 30, 260, 30);
+
+        jTextField2.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                jTextField2KeyTyped(evt);
+            }
+        });
         getContentPane().add(jTextField2);
         jTextField2.setBounds(100, 70, 260, 30);
 
@@ -229,6 +241,32 @@ public class DialogAnadirPaciente extends javax.swing.JDialog {
         }
         
     }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void jTextField1KeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextField1KeyTyped
+        // TODO add your handling code here:
+        char c = evt.getKeyChar();
+
+        if (!Character.isLetter(c) && c != ' ' && c != java.awt.event.KeyEvent.VK_BACK_SPACE) {
+
+            evt.consume();
+
+            JOptionPane.showMessageDialog(null, "Solo se permiten letras en este campo");
+
+        }        
+    }//GEN-LAST:event_jTextField1KeyTyped
+
+    private void jTextField2KeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextField2KeyTyped
+        // TODO add your handling code here:
+        char c = evt.getKeyChar();
+
+        if (!Character.isLetter(c) && c != ' ' && c != java.awt.event.KeyEvent.VK_BACK_SPACE) {
+
+            evt.consume();
+
+            JOptionPane.showMessageDialog(null, "Solo se permiten letras en este campo");
+
+        }        
+    }//GEN-LAST:event_jTextField2KeyTyped
 
     /**
      * @param args the command line arguments

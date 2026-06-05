@@ -6,6 +6,7 @@ package vista;
 
 import controlador.VistaCitaDAO;
 import java.util.List;
+import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.text.MaskFormatter;
 import modelo.VistaCita;
@@ -48,6 +49,14 @@ public class DialogVistaCitas extends javax.swing.JDialog {
     private void cargarTabla() {
 
         String fecha = jFormattedTextField1.getText().trim();
+        
+        if (fecha.equals("00-00-0000")) {
+
+            JOptionPane.showMessageDialog(this, "Ingrese una fecha!", "Campo Vacío", JOptionPane.WARNING_MESSAGE);
+
+            return;
+
+        }
 
         DefaultTableModel modelo = new DefaultTableModel();
         modelo.addColumn("Fecha");
@@ -58,6 +67,20 @@ public class DialogVistaCitas extends javax.swing.JDialog {
         VistaCitaDAO dao = new VistaCitaDAO();
 
         List<VistaCita> lista = dao.buscarPorFecha(fecha);
+        
+        if (lista.isEmpty()) {
+
+            JOptionPane.showMessageDialog(this, "No hay citas programadas para esa fecha.", "Consulta de citas", JOptionPane.INFORMATION_MESSAGE
+
+            );
+
+            dao.cerrarConexion();
+
+            jTable1.setModel(modelo);
+
+            return;
+
+        }
 
         for (VistaCita vista : lista) {
 
@@ -136,7 +159,7 @@ public class DialogVistaCitas extends javax.swing.JDialog {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
-        cargarTabla();
+        cargarTabla(); 
     }//GEN-LAST:event_jButton1ActionPerformed
 
     /**
