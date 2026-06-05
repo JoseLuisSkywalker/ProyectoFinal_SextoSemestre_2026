@@ -353,7 +353,7 @@ public class Inicio extends javax.swing.JFrame {
     }
     
     public void eliminarPaciente(int fila) {
-        int opcion = javax.swing.JOptionPane.showConfirmDialog(this, "¿Desea eliminar este paciente?", "Confirmar eliminación", javax.swing.JOptionPane.YES_NO_OPTION);
+        int opcion = javax.swing.JOptionPane.showConfirmDialog(this, "¿Desea eliminar este paciente?, Haciendo esto, se cancelan sus citas asignadas", "Confirmar eliminación", javax.swing.JOptionPane.YES_NO_OPTION);
 
         if (opcion != javax.swing.JOptionPane.YES_OPTION) {
             return;
